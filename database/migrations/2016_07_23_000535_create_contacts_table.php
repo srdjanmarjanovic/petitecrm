@@ -19,7 +19,6 @@ class CreateContactsTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->integer('company_id');
-            $table->json('misc');
             $table->timestamps();
         });
     }

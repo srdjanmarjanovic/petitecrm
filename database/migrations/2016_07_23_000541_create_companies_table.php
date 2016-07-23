@@ -21,7 +21,6 @@ class CreateCompaniesTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('website');
-            $table->json('misc');
             $table->timestamps();
         });
     }
