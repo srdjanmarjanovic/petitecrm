@@ -1,4 +1,8 @@
 @extends('layouts.app')
-@section('content')
-list all contacts
+@section('contentheader_title')
+Contacts
+@endsection
+
+@section('main-content')
+list all
 @endsection

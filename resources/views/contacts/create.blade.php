@@ -1,4 +1,8 @@
 @extends('layouts.app')
-@section('content')
-create contact form
+@section('contentheader_title')
+Contacts
+@endsection
+
+@section('main-content')
+Create
 @endsection

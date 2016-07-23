@@ -1,4 +1,8 @@
 @extends('layouts.app')
-@section('content')
-create company form
+@section('contentheader_title')
+Companies
+@endsection
+
+@section('main-content')
+Create
 @endsection

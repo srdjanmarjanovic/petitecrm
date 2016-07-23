@@ -1,4 +1,8 @@
 @extends('layouts.app')
-@section('content')
-list all company
+@section('contentheader_title')
+Companies
+@endsection
+
+@section('main-content')
+list all
 @endsection
