@@ -29,7 +29,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-blue fixed">
+<body class="skin-blue layout-boxed">
 <div class="wrapper">
 
     @include('layouts.partials.mainheader')
@@ -44,7 +44,9 @@ desired effect
         <!-- Main content -->
         <section class="content">
             <!-- Your Page Content Here -->
-            @yield('main-content')
+            <div class="row">
+                @yield('main-content')
+            </div>
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 

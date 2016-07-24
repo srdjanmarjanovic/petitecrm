@@ -4,5 +4,7 @@ Contacts
 @endsection
 
 @section('main-content')
-list all
+    {{--@foreach($contacts as $contact)--}}
+        @include('contacts.partials.card', compact('contact'))
+    {{--@endforeach--}}
 @endsection
