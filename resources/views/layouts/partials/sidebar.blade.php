@@ -34,8 +34,8 @@
             {{--<li class="header">{{ trans('adminlte_lang::message.header') }}</li>--}}
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
-            <li><a href="{{ route('contacts.all') }}"><i class='glyphicon glyphicon-user'></i> <span>Contacts</span></a></li>
-            <li><a href="{{ route('companies.all') }}"><i class='glyphicon glyphicon-th-large'></i> <span>Companies</span></a></li>
+            <li><a href="{{ route('contacts.all') }}"><i class='glyphicon glyphicon-user text-aqua'></i> <span>Contacts</span></a></li>
+            <li><a href="{{ route('companies.all') }}"><i class='glyphicon glyphicon-th-large text-green'></i> <span>Companies</span></a></li>
             <li class="treeview">
                 <a href="#"><i class='fa fa-list'></i> <span>My Lists</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
