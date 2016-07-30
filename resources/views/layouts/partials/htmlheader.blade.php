@@ -6,6 +6,11 @@
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
@@ -25,6 +30,10 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
+        .material-icons.md-18 { font-size: 18px; }
+        .material-icons.md-24 { font-size: 24px; }
+        .material-icons.md-36 { font-size: 36px; }
+        .material-icons.md-48 { font-size: 48px; }
         @yield('style')
     </style>
 </head>
