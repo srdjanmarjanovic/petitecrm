@@ -2,6 +2,6 @@
 @section('contentheader_title')
 Contacts
 @endsection
-@section('content')
-show single
+@section('main-content')
+    @include('contacts.partials.profile', compact('contact'))
 @endsection

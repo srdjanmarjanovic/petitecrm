@@ -27,7 +27,8 @@ Route::resource('contacts', 'ContactController', [
         'update' => 'contact.update',
         'edit' => 'contact.edit',
         'store' => 'contact.save',
-    ]
+    ],
+    'middleware' => 'auth'
 ]);
 
 Route::resource('companies', 'CompanyController', [
@@ -38,7 +39,8 @@ Route::resource('companies', 'CompanyController', [
         'update' => 'company.update',
         'edit' => 'company.edit',
         'store' => 'company.save',
-    ]
+    ],
+    'middleware' => 'auth'
 ]);
 
 Route::resource('lists', 'ListController', [
@@ -49,7 +51,8 @@ Route::resource('lists', 'ListController', [
         'update' => 'list.update',
         'edit' => 'list.edit',
         'store' => 'list.save',
-    ]
+    ],
+    'middleware' => 'auth'
 ]);
 
 Route::resource('tags', 'TagsController', [
@@ -60,5 +63,6 @@ Route::resource('tags', 'TagsController', [
         'update' => 'tag.update',
         'edit' => 'tag.edit',
         'store' => 'tag.save',
-    ]
+    ],
+    'middleware' => 'auth'
 ]);

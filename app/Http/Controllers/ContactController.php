@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Contact;
+use App\Tag;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -26,7 +28,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('contacts.index', ['contacts' => Contact::all()]);
+        $contacts = Contact::all();
+        $companies = Company::take(5)->get();
+        $tags = Tag::take(5)->get();
+
+        return view('contacts.index', ['contacts' => $contacts, 'companies' => $companies, 'tags' => $tags]);
     }
 
     /**
@@ -58,7 +64,7 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('contacts.show', ['contact' => Contact::findOrFail($id)]);
     }
 
     /**
