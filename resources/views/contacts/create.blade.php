@@ -25,10 +25,10 @@ Contacts
             <div class="col-sm-10">
                 <div class="row">
                     <div class="col-xs-4">
-                        <input tabindex="1" class="form-control" id="first_name" placeholder="Marco" type="text">
+                        <input tabindex="1" class="form-control" name="first_name" id="first_name" placeholder="Marco" type="text">
                     </div>
                     <div class="col-xs-8">
-                        <input tabindex="2" class="form-control" id="last_name" placeholder="Polo" type="text">
+                        <input tabindex="2" class="form-control" name="last_name" id="last_name" placeholder="Polo" type="text">
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@ Contacts
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label text-muted">Email</label>
             <div class="col-sm-10">
-                <input tabindex="3" class="form-control" id="email" placeholder="marco@polo.com" type="email">
+                <input tabindex="3" class="form-control" name="email" id="email" placeholder="marco@polo.com" type="email">
             </div>
         </div>
 
@@ -45,7 +45,7 @@ Contacts
             <label for="phone" class="col-sm-2 control-label text-muted">Phone</label>
 
             <div class="col-sm-10">
-                <input tabindex="4" class="form-control" id="phone" placeholder="+381 64 123 456 789" type="text">
+                <input tabindex="4" class="form-control" name="phone" id="phone" placeholder="+381 64 123 456 789" type="text">
             </div>
         </div>
 
@@ -53,7 +53,7 @@ Contacts
             <label for="company" class="col-sm-2 control-label text-muted">Company</label>
 
             <div class="col-sm-3">
-                <select name="company" tabindex="5" class="form-control select2 select2-hidden-accessible" data-placeholder="Select a company">
+                <select name="company_id" tabindex="5" class="form-control select2 select2-hidden-accessible" data-placeholder="Select a company">
                     <option value="">- none -</option>
                     @foreach($companies as $company)
                         <option value="{{ $company->id }}">{{ $company->name }}</option>
@@ -61,7 +61,7 @@ Contacts
                 </select>
             </div>
             <div class="col-sm-7">
-                <input tabindex="6" class="form-control" id="inputSkills" placeholder="Position" type="text">
+                <input tabindex="6" class="form-control" name="position" id="position" placeholder="Position" type="text">
             </div>
         </div>
 
@@ -69,7 +69,7 @@ Contacts
             <label for="inputSkills" class="col-sm-2 control-label text-muted">Tags</label>
 
             <div class="col-sm-10">
-                <input tabindex="7" class="form-control" id="tags" placeholder="Tags" type="text">
+                <input tabindex="7" class="form-control" name="tags" id="tags" placeholder="Tags" type="text">
             </div>
         </div>
 
@@ -78,7 +78,7 @@ Contacts
             <label for="notes" class="col-sm-2 control-label text-muted">Notes</label>
 
             <div class="col-sm-10">
-                <textarea tabindex="8" class="form-control" id="notes" placeholder="Notes about contact"></textarea>
+                <textarea tabindex="8" class="form-control" name="notes" id="notes" placeholder="Notes about contact"></textarea>
             </div>
         </div>
 

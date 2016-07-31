@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Contact;
+use App\Http\Requests\CreateContactRequest;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -49,12 +50,24 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param CreateContactRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateContactRequest $request)
     {
-        //
+        $contact = new Contact();
+        $contact->first_name = $request->get('first_name');
+        $contact->last_name = $request->get('last_name');
+        $contact->email = $request->get('last_name');
+        $contact->phone = $request->get('phone');
+        $contact->company_id = $request->get('company_id');
+        $contact->position = $request->get('position');
+
+        $contact->save();
+
+        // @TODO attach tags
+        // @TODO set note
+
     }
 
     /**
