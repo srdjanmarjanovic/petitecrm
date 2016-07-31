@@ -5,8 +5,9 @@ Contacts
 
 @section('context_menu')
     <ul class="context_menu">
-        <li><a href="{{ route('contacts.import.form') }}">Import</a></li>
         <li><a href="#">Advanced search</a></li>
+        <li><a href="{{ route('contacts.import.form') }}">Import</a></li>
+        <li><a href="#">Detect duplicates</a></li>
     </ul>
 @endsection
 

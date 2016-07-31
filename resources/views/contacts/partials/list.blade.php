@@ -88,7 +88,7 @@
 </div>
 <!-- /.col -->
 <div class="col-md-3">
-  <a href="{{ route('contact.create')  }}" class="btn btn-success btn-block margin-bottom"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Contact</a>
+  <a href="{{ route('contact.create')  }}" class="btn btn-success btn-block margin-bottom btn-lg"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Contact</a>
 
   <div class="box box-solid">
     <div class="box-header with-border">

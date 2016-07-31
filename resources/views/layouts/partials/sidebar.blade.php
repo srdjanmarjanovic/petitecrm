@@ -26,7 +26,7 @@
             <li><a href="{{ route('contacts.all') }}"><i class='glyphicon glyphicon-user text-aqua'></i> <span>Contacts</span></a></li>
             <li><a href="{{ route('companies.all') }}"><i class='glyphicon glyphicon-th-large text-green'></i> <span>Companies</span></a></li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-list'></i> <span>My Lists</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-list text-light-blue'></i> <span>My Lists</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="#"><i class="fa fa-circle-o"></i>{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-aqua"></i>{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
