@@ -100,4 +100,22 @@ class ContactController extends Controller
     {
         //
     }
+
+    /**
+     * Show the form for importing contacts.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showImportForm()
+    {
+        return view('contacts.import');
+    }
+
+    /**
+     * Do import contacts.
+     */
+    public function doImport()
+    {
+        dd('implement this');
+    }
 }

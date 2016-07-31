@@ -19,6 +19,11 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::group(['prefix' => 'contacts'], function () {
+    Route::get('import', ['as' => 'contacts.import.form', 'uses' => 'ContactController@showImportForm']);
+    Route::post('import', ['as' => 'contacts.import.do_import', 'uses' => 'ContactController@doImport']);
+});
+
 Route::resource('contacts', 'ContactController', [
     'names' => [
         'create' => 'contact.create',
@@ -30,6 +35,7 @@ Route::resource('contacts', 'ContactController', [
     ],
     'middleware' => 'auth'
 ]);
+
 
 Route::resource('companies', 'CompanyController', [
     'names' => [
@@ -66,3 +72,4 @@ Route::resource('tags', 'TagsController', [
     ],
     'middleware' => 'auth'
 ]);
+
