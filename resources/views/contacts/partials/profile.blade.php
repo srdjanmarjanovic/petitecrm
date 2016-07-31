@@ -3,11 +3,17 @@
   <!-- Profile Image -->
   <div class="box box-primary">
     <div class="box-body box-profile">
+      <p class="text-muted">
+          <i class="fa fa-calendar margin-r-5 text-muted" aria-hidden="true"></i> <small title="{{ $contact->created_at }}">Added {{ $contact->created_at->diffForHumans() }}</small>
+      </p>
+
       <img class="profile-user-img img-responsive img-circle" src="{{asset('/img/user2-160x160.jpg')}}" alt="User profile picture">
 
       <h3 class="profile-username text-center">{{ $contact->first_name }} {{ $contact->last_name }}</h3>
 
-      <p class="text-muted text-center">{{ $contact->position }}</p>
+      <p class="text-muted text-center">
+        <small>@if(!empty($contact->role)) {{ $contact->role }} in @endif {{ $contact->company->name }} </small>
+      </p>
 
       <ul class="list-group list-group-unbordered">
         <li class="list-group-item">
@@ -21,6 +27,7 @@
         </li>
       </ul>
 
+      {{-- @TODO point this link to new message form --}}
       <a href="#" class="btn btn-primary btn-block"><b><i class="fa fa-envelope"></i> Message</b></a>
     </div>
     <!-- /.box-body -->
@@ -34,7 +41,18 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-      <i class="fa fa-calendar margin-r-5 text-muted" aria-hidden="true"></i> <span title="{{ $contact->created_at }}">Added {{ $contact->created_at->diffForHumans() }}</span>
+        <p>
+            <i class="fa fa-envelope margin-r-5 text-muted" aria-hidden="true"></i><span>{{ $contact->email }}</span>
+        </p>
+        <hr/>
+        @if(!empty($contact->phone))
+            <p>
+                <i class="fa fa-phone margin-r-5 text-muted" aria-hidden="true"></i><span>{{ $contact->phone }}</span>
+            </p>
+            <hr/>
+        @endif
+
+
 
         {{--@if($contact->getLocation())--}}
           {{--<hr/>--}}
@@ -54,8 +72,8 @@
           <hr>
         @endif
 
-        @if(!empty($contact->note))
-        <p><i class="fa fa-file-text-o margin-r-5 text-muted"></i>{{ $contact->note }}</p>
+        @if(!empty($contact->notes))
+            <p><i class="fa fa-file-text-o margin-r-5 text-muted"></i>{{ $contact->notes }}</p>
         @endif
 
     </div>

@@ -60,8 +60,10 @@ Contacts
                     @endforeach
                 </select>
             </div>
-            <div class="col-sm-7">
-                <input tabindex="6" class="form-control" name="position" id="position" placeholder="Position" type="text">
+
+            <label for="company" class="col-sm-1 control-label text-muted">Role</label>
+            <div class="col-sm-6">
+                <input tabindex="6" class="form-control" name="role" id="position" placeholder="Store manager" type="text">
             </div>
         </div>
 
@@ -84,7 +86,7 @@ Contacts
 
         <div class="form-group">
             <div class="col-xs-offset-9 col-sm-offset-10 col-xs-3 col-sm-2">
-                <button type="submit" class="btn btn-block btn-primary btn-sm">Create</button>
+                <button tabindex="8" type="submit" class="btn btn-block btn-primary btn-sm">Create</button>
             </div>
         </div>
 

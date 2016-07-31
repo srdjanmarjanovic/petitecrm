@@ -25,12 +25,12 @@ class CreateContactRequest extends Request
     public function rules()
     {
         $rules = [
-//            'first_name' => 'between:3,250',
-//            'last_name' => 'between:3,250',
-//            'email' => 'required|email',
-//            'phone' => 'required|between:3,250',
-//            'category_id' => 'exists:category,id',
-//            'position' => 'between:3,250',
+            'first_name' => 'between:3,250',
+            'last_name' => 'between:3,250',
+            'email' => 'required|email',
+            'phone' => 'between:3,250',
+//            'company_id' => 'exists:category,id', // @TODO wtf is 'exists', 'category', 'id'?
+            'position' => 'between:3,250',
         ];
 
         return $rules;

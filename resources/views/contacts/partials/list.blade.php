@@ -102,7 +102,7 @@
     <div class="box-body no-padding">
       <ul class="nav nav-pills nav-stacked">
         @foreach($companies as $company)
-            <li><a href="#">{{ $company->name }} <span class="label label-primary pull-right">{{ count($company->contacts) }}</span></a></li>
+            <li><a href="?company={{ $company->id }}">{{ $company->name }} <span class="label label-primary pull-right">{{ count($company->contacts) }}</span></a></li>
         @endforeach
         <li><a href="#">Other ...</a></li>
       </ul>

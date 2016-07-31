@@ -56,17 +56,19 @@ class ContactController extends Controller
     public function store(CreateContactRequest $request)
     {
         $contact = new Contact();
+
         $contact->first_name = $request->get('first_name');
         $contact->last_name = $request->get('last_name');
-        $contact->email = $request->get('last_name');
+        $contact->email = $request->get('email');
         $contact->phone = $request->get('phone');
         $contact->company_id = $request->get('company_id');
-        $contact->position = $request->get('position');
-
+        $contact->role = $request->get('role');
         $contact->save();
 
         // @TODO attach tags
         // @TODO set note
+
+        return redirect(route('contacts.all'))->withStatus(['class' => 'success', 'message' => 'Success message']);
 
     }
 
