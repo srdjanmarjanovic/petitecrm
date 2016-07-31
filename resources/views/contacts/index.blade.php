@@ -10,7 +10,5 @@ Contacts
 @endsection
 
 @section('main-content')
-    {{--@foreach($contacts as $contact)--}}
-        @include('contacts.partials.card', compact('contact'))
-    {{--@endforeach--}}
+    @include('contacts.partials.list')
 @endsection
