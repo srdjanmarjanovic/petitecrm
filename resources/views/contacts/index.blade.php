@@ -3,7 +3,7 @@
 Contacts
 @endsection
 
-@section('context_menu')
+@section('page_specific_navigation')
     <ul class="context_menu">
         <li><a href="#">Advanced search</a></li>
         <li><a href="{{ route('contacts.import.form') }}">Import</a></li>

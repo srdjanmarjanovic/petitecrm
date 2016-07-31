@@ -5,5 +5,5 @@
         <small>@yield('contentheader_description')</small>
     </h1>
 
-    @yield('context_menu')
+    @yield('page_specific_navigation')
 </section>
