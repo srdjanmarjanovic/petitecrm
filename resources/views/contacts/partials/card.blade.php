@@ -1,36 +1,18 @@
 <div class="col-md-9">
-  <div class="box box-solid collapsed-box">
+  <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">Search</h3>
-
-      <div class="box-tools">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-        </button>
-      </div>
-    </div>
-    <div class="box-body no-padding">
-        <form action="#">
-            <div class="form-group">
-                <input class="form-control" placeholder="Email" type="text" name="name" id="name">
-            </div>
-        </form>
-    </div>
-    <!-- /.box-body -->
-  </div>
-
-
-  <div class="box">
-    <div class="box-header with-border">
-      <div class="box-tools">
-        <div class="has-feedback">
-          <input class="form-control input-sm" placeholder="Search" type="text">
-          <span class="glyphicon glyphicon-search form-control-feedback"></span>
-        </div>
-      </div>
+      <form action="#" method="get">
+          <div class="input-group">
+              <input class="form-control" placeholder="{{ trans('adminlte_lang::message.search') }}" type="text" name="q" id="q">
+              <span class="input-group-btn">
+                <button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+          </div>
+      </form>
       <!-- /.box-tools -->
     </div>
     <!-- /.box-header -->
-    <div class="box-body no-padding">
+    <div class="box-body">
       <div class="mailbox-controls">
         <!-- Check all button -->
         <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
@@ -43,12 +25,10 @@
         <!-- /.btn-group -->
         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
         <div class="pull-right">
-          1-50/200
-          <div class="btn-group">
-            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-          </div>
-          <!-- /.btn-group -->
+            {!! $contacts->firstItem() .' - '. $contacts->lastItem() !!}/{!! $contacts->total() !!} results
+            @if ($contacts->hasMorePages())
+                @include('contacts.partials.pagination.btns')
+            @endif
         </div>
         <!-- /.pull-right -->
       </div>
@@ -60,7 +40,7 @@
                 <td><div aria-disabled="false" aria-checked="false" style="position: relative;" class="icheckbox_flat-blue"><input style="position: absolute; opacity: 0;" type="checkbox"><ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins></div></td>
                 <td class="mailbox-star" title="{{ $contact->type }}"><i class="fa {{ $contact->getTypeClass() }} text-yellow"></i></td>
                 <td class="mailbox-name">
-                    <a href="read-mail.html">
+                    <a href="{{ route('contact.single', ['id' => $contact->id]) }}">
                         {{ $contact->getDisplayName() }}
                     </a>
                 </td>
@@ -95,12 +75,10 @@
         <!-- /.btn-group -->
         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
         <div class="pull-right">
-          1-50/200
-          <div class="btn-group">
-            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-          </div>
-          <!-- /.btn-group -->
+          {!! $contacts->firstItem() .' - '. $contacts->lastItem() !!}/{!! $contacts->total() !!} results
+          @if ($contacts->hasMorePages())
+              @include('contacts.partials.pagination.btns')
+          @endif
         </div>
         <!-- /.pull-right -->
       </div>

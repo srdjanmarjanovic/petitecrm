@@ -1,0 +1,1 @@
+<a href="{{ $contacts->nextPageUrl() }}" class="btn btn-default btn-xs"><i class="fa fa-chevron-right"></i></a>

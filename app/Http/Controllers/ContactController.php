@@ -28,7 +28,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::paginate(10);
         $companies = Company::take(5)->get();
         $tags = Tag::take(5)->get();
 

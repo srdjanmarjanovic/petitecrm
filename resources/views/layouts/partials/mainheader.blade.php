@@ -17,7 +17,7 @@
                         <span class="label label-success">4</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">{{ trans('adminlte_lang::message.tabmessages') }}</li>
+                        <li class="header">{{ trans('adminlte_lang::message.tabmessages', ['count' => '27']) }}</li>
                         <li>
                             <!-- inner menu: contains the messages -->
                             <ul class="menu">

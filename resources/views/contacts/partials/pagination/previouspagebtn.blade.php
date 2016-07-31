@@ -1,0 +1,1 @@
+<a href="{{ $contacts->previousPageUrl() }}" class="btn btn-default btn-xs"><i class="fa fa-chevron-left"></i></a>

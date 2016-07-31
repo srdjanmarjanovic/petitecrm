@@ -6,9 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    protected $defaults = [
-
+    /**
+     * Set default attribute values.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'type' => 'lead'
     ];
+
+    /**
+     * Set the dates array so we can format them from a blade template.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at'
+    ];
+
 
     /**
      * Company relationship.
@@ -69,7 +84,7 @@ class Contact extends Model
             case 'lead':
                 return 'fa-star-o';
             case 'prospect':
-                return 'fa-star';
+                return 'fa-star-half-o';
             case 'customer':
                 return 'fa-star';
             default:

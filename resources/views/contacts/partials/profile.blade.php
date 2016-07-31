@@ -34,7 +34,7 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-      <i class="fa fa-calendar margin-r-5 text-muted" aria-hidden="true"></i> <span>Added {{ $contact->created_at }}</span>
+      <i class="fa fa-calendar margin-r-5 text-muted" aria-hidden="true"></i> <span title="{{ $contact->created_at }}">Added {{ $contact->created_at->diffForHumans() }}</span>
 
         {{--@if($contact->getLocation())--}}
           {{--<hr/>--}}
