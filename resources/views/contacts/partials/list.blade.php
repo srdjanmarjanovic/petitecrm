@@ -26,7 +26,7 @@
         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
         <div class="pull-right">
             {!! $contacts->firstItem() .' - '. $contacts->lastItem() !!}/{!! $contacts->total() !!} results
-            @if ($contacts->hasMorePages())
+            @if ($contacts->hasMorePages() || $contacts->previousPageUrl())
                 @include('contacts.partials.pagination.btns')
             @endif
         </div>
@@ -76,7 +76,7 @@
         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
         <div class="pull-right">
           {!! $contacts->firstItem() .' - '. $contacts->lastItem() !!}/{!! $contacts->total() !!} results
-          @if ($contacts->hasMorePages())
+          @if ($contacts->hasMorePages() || $contacts->previousPageUrl())
               @include('contacts.partials.pagination.btns')
           @endif
         </div>
