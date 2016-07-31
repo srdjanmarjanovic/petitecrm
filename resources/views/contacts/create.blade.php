@@ -9,6 +9,18 @@ Contacts
         {!! csrf_field(); !!}
 
         <div class="form-group">
+            <label for="first_name" class="col-sm-2 control-label text-muted">Type</label>
+            <div class="col-sm-4">
+                <select name="type" tabindex="1" class="form-control select2 select2-hidden-accessible" data-placeholder="Select type of contact">
+                    <option value="lead">Lead</option>
+                    <option value="prospect">Prospect</option>
+                    <option value="customer">Customer</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-group">
             <label for="first_name" class="col-sm-2 control-label text-muted">Name</label>
             <div class="col-sm-10">
                 <div class="row">
@@ -40,7 +52,7 @@ Contacts
         <div class="form-group">
             <label for="company" class="col-sm-2 control-label text-muted">Company</label>
 
-            <div class="col-sm-10">
+            <div class="col-sm-3">
                 <select name="company" tabindex="5" class="form-control select2 select2-hidden-accessible" data-placeholder="Select a company">
                     <option value="">- none -</option>
                     @foreach($companies as $company)
@@ -48,13 +60,16 @@ Contacts
                     @endforeach
                 </select>
             </div>
+            <div class="col-sm-7">
+                <input tabindex="6" class="form-control" id="inputSkills" placeholder="Position" type="text">
+            </div>
         </div>
 
         <div class="form-group">
             <label for="inputSkills" class="col-sm-2 control-label text-muted">Tags</label>
 
             <div class="col-sm-10">
-                <input tabindex="6" class="form-control" id="inputSkills" placeholder="Tags" type="text">
+                <input tabindex="7" class="form-control" id="tags" placeholder="Tags" type="text">
             </div>
         </div>
 
@@ -63,7 +78,7 @@ Contacts
             <label for="notes" class="col-sm-2 control-label text-muted">Notes</label>
 
             <div class="col-sm-10">
-                <textarea tabindex="7" class="form-control" id="notes" placeholder="Notes about contact"></textarea>
+                <textarea tabindex="8" class="form-control" id="notes" placeholder="Notes about contact"></textarea>
             </div>
         </div>
 
