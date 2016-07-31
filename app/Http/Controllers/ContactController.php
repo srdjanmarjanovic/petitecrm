@@ -28,7 +28,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::paginate(10);
+        $contacts = Contact::orderBy('created_at', 'desc')->paginate(10);
         $companies = Company::take(5)->get();
         $tags = Tag::take(5)->get();
 
@@ -42,7 +42,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contacts.create');
+        $companies = Company::all();
+        return view('contacts.create', compact('companies'));
     }
 
     /**

@@ -52,7 +52,7 @@
                         {{ $contact->company->name }}
                     @endif
                 </td>
-                <td class="mailbox-date">5 mins ago</td>
+                <td class="mailbox-date" title="{{ $contact->created_at }}">{{ $contact->created_at->diffForHumans() }}</td>
               </tr>
           @endforeach
           </tbody>
