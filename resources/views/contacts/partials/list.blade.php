@@ -1,5 +1,5 @@
 <div class="col-md-9">
-  <div class="box box-primary">
+  <div class="box box-solid">
     <div class="box-header with-border">
       <form action="#" method="get">
           <div class="input-group">
