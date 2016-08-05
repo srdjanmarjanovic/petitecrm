@@ -43,6 +43,13 @@ desired effect
 
         <!-- Main content -->
         <section class="content">
+            <!-- @TODO napraviti novu sekciju za third level menu -->
+
+            <!-- @TODO napraviti novu sekciju za second level menu -->
+            <div class="row">
+                <div class="col-md-12"><a href="{{ route('contact.create')  }}" class="btn btn-success btn-flat margin-bottom btn-md"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Contact</a></div>
+            </div>
+
             <!-- Your Page Content Here -->
             <div class="row">
                 @yield('main-content')

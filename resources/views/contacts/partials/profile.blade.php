@@ -1,7 +1,7 @@
 <div class="col-md-3">
 
   <!-- Profile Image -->
-  <div class="box box-primary">
+  <div class="box box-solid">
     <div class="box-body box-profile">
       <p class="text-muted">
           <i class="fa fa-calendar margin-r-5 text-muted" aria-hidden="true"></i> <small title="{{ $contact->created_at }}">Added {{ $contact->created_at->diffForHumans() }}</small>
@@ -12,7 +12,7 @@
       <h3 class="profile-username text-center">{{ $contact->first_name }} {{ $contact->last_name }}</h3>
 
       <p class="text-muted text-center">
-        <small>@if(!empty($contact->role)) {{ $contact->role }} in @endif {{ $contact->company->name }} </small>
+        <small>@if(!empty($contact->role)) {{ $contact->role }} in @endif @if($contact->company) {{ $contact->company->name }} @endif</small>
       </p>
 
       <ul class="list-group list-group-unbordered">
@@ -35,7 +35,7 @@
   <!-- /.box -->
 
   <!-- About Me Box -->
-  <div class="box box-primary">
+  <div class="box box-solid">
     <div class="box-header with-border">
       <h3 class="box-title">About</h3>
     </div>
@@ -147,7 +147,7 @@
                 <input class="form-control input-sm" placeholder="Response">
               </div>
               <div class="col-sm-3">
-                <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
+                <button type="submit" class="btn btn-flat btn-danger pull-right btn-block btn-sm">Send</button>
               </div>
             </div>
           </form>
