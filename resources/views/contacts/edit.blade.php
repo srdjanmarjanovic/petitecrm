@@ -17,7 +17,7 @@ Edit {{ $contact->getDisplayName() }}
             <div class="form-group">
                 <label for="first_name" class="col-sm-2 control-label text-muted">Type</label>
                 <div class="col-sm-10">
-                    <div class="btn-group" data-toggle="buttons">
+                    <div class="btn-group btn-options" data-toggle="buttons">
                         <label class="btn btn-default btn-flat {{ ($contact->type === 'lead') ? 'active' : '' }}">
                             {{ Form::radio('type', 'lead', ($contact->type === 'lead'), ['autocomplete' => 'off']) }} Lead
                         </label>
