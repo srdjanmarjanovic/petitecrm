@@ -166,6 +166,10 @@ return [
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
         #llum_providers
 
+        /*
+         * User added service providers...
+         */
+        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -220,6 +224,11 @@ return [
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
         #llum_aliases
 
+        /*
+         * User added Aliases...
+         */
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

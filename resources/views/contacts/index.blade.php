@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('contentheader_title')
-Contacts
+	Contacts
 @endsection
 
 @section('section-one')
-	<ul class="contacts-top-menu list-inline text-right margin">
+	<ul class="contacts-top-menu list-inline text-right margin-tb-10">
 	    <li><a href="#">Advanced search</a></li>
 	    <li><a href="{{ route('contacts.import.form') }}">Import</a></li>
 	    <li><a href="#">Detect duplicates</a></li>
@@ -21,4 +21,11 @@ Contacts
 
 @section('main-content')
     @include('contacts.partials.list')
+@endsection
+
+@section('scripts')
+	@parent
+	<script type="text/javascript">
+		$('.dropdown-toggle').dropdown()
+	</script>
 @endsection

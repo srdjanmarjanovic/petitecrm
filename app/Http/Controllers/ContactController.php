@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Contact;
 use App\Http\Requests\CreateContactRequest;
+use App\Http\Requests\EditContactRequest;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -25,9 +26,10 @@ class ContactController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $contacts = Contact::orderBy('created_at', 'desc')->paginate(10);
         $companies = Company::take(5)->get();
@@ -69,7 +71,6 @@ class ContactController extends Controller
         // @TODO set note
 
         return redirect(route('contacts.all'))->withStatus(['class' => 'success', 'message' => 'Success message']);
-
     }
 
     /**
@@ -91,19 +92,23 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+        $companies = Company::all();
+        $tags = Tag::all();
+        return view('contacts.edit', compact('contact', 'companies', 'tags'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param EditContactRequest $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditContactRequest $request, $id)
     {
-        //
+        $contact = Contact::findOrFailt($id);
+        $contact->update($request);
     }
 
     /**
@@ -114,7 +119,7 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 
     /**
@@ -133,5 +138,17 @@ class ContactController extends Controller
     public function doImport()
     {
         dd('implement this');
+    }
+
+    /**
+     * @param $request
+     */
+    public function getFilterConditions($request)
+    {
+//        if (($filter = $request->get('filter')) && $ids = () ) {
+//            if (in_array(strtolower($filter), ['company', 'tag'])) {
+//                $conditions['filter'] = $filter;
+//            }
+//        }
     }
 }

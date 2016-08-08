@@ -29,7 +29,7 @@ class CreateContactRequest extends Request
             'last_name' => 'between:3,250',
             'email' => 'required|email',
             'phone' => 'between:3,250',
-//            'company_id' => 'exists:category,id', // @TODO wtf is 'exists', 'category', 'id'?
+            'company_id' => 'exists:company,id',
             'position' => 'between:3,250',
         ];
 

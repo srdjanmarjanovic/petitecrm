@@ -28,7 +28,7 @@
 
         <div class="box-body">
           <div class="table-responsive mailbox-messages">
-            <table class="table">
+            <table class="table table-hover">
               <tbody>
               @if($contacts->count())
                 @foreach($contacts as $contact)
@@ -49,6 +49,19 @@
                         @endif
                     </td>
                     <td class="mailbox-date text-muted text-right" title="{{ $contact->created_at }}"><small>{{ $contact->created_at->diffForHumans() }}</small></td>
+                    <td>
+                        <div class="dropdown">
+                            <a id="dLabel" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                                <span class="label label-default">
+                                    <i class="fa fa-caret-down text-info"></i>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <li><a href="{{ route('contact.edit', $contact->id) }}">Edit</a></li>
+                                <li><a href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>   
                   </tr>
                 @endforeach
               @else
@@ -89,43 +102,6 @@
 </div>
 <!-- /.col -->
 <div class="col-md-3">
-    <div class="box box-solid">
-        <div class="box-header with-border">
-          <h3 class="box-title">Companies</h3>
-
-          <div class="box-tools">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-          </div>
-        </div>
-        <div class="box-body no-padding">
-          <ul class="nav nav-pills nav-stacked">
-            @foreach($companies as $company)
-                <li><a href="?company={{ $company->id }}">{{ $company->name }} <span class="label label-primary pull-right">{{ count($company->contacts) }}</span></a></li>
-            @endforeach
-            <li><a href="#">Other ...</a></li>
-          </ul>
-        </div>
-    <!-- /.box-body -->
-    </div>
-  <!-- /.box -->
-  <div class="box box-solid">
-    <div class="box-header with-border">
-      <h3 class="box-title">Tags</h3>
-
-      <div class="box-tools">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-        </button>
-      </div>
-    </div>
-    <div class="box-body no-padding">
-      <ul class="nav nav-pills nav-stacked">
-        @foreach($tags as $tag)
-            <li><a href="#">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->contacts) }}</span></a></li>
-        @endforeach
-      </ul>
-    </div>
-    <!-- /.box-body -->
-  </div>
-  <!-- /.box -->
+    @include('companies.partials.sidebar-block')
+    @include('tags.partials.sidebar-block')
 </div>

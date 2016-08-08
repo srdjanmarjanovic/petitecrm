@@ -82,13 +82,12 @@ class Contact extends Model
     {
         switch ($this->type) {
             case 'lead':
+            default:
                 return 'fa-star-o';
             case 'prospect':
                 return 'fa-star-half-o';
             case 'customer':
                 return 'fa-star';
-            default:
-                throw new \LogicException('Unknown customer type');
         }
     }
 }

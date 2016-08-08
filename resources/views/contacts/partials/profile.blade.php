@@ -28,7 +28,7 @@
       </ul>
 
       {{-- @TODO point this link to new message form --}}
-      <a href="#" class="btn btn-primary btn-block"><b><i class="fa fa-envelope"></i> Message</b></a>
+      <a href="#" class="btn btn-flat btn-primary btn-block"><b><i class="fa fa-envelope"></i> Message</b></a>
     </div>
     <!-- /.box-body -->
   </div>
@@ -36,46 +36,34 @@
 
   <!-- About Me Box -->
   <div class="box box-solid">
-    <div class="box-header with-border">
+    <div class="box-header">
       <h3 class="box-title">About</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-        <p>
-            <i class="fa fa-envelope margin-r-5 text-muted" aria-hidden="true"></i><span>{{ $contact->email }}</span>
-        </p>
-        <hr/>
+      <ul class="list-group list-group-unbordered">
+        <li class="list-group-item">
+          <i class="fa fa-envelope margin-r-5 text-muted" aria-hidden="true"></i><span>{{ $contact->email }}</span>
+        </li>
         @if(!empty($contact->phone))
-            <p>
+            <li class="list-group-item">
                 <i class="fa fa-phone margin-r-5 text-muted" aria-hidden="true"></i><span>{{ $contact->phone }}</span>
-            </p>
-            <hr/>
+            </li>
+            @if(count($contact->tags))
+                <li class="list-group-item">
+                    <i class="fa fa-tags margin-r-5 text-muted"></i>
+                    @foreach($contact->tags as $tag)
+                        <span class="label label-primary">{{ $tag->name }}</span>
+                    @endforeach
+                </li>
+            @endif
         @endif
-
-
-
-        {{--@if($contact->getLocation())--}}
-          {{--<hr/>--}}
-
-          {{--<i class="fa fa-map-marker margin-r-5 text-muted"></i> <span>Novi Sad, Serbia</span>--}}
-          {{--<p class="text-muted"></p>--}}
-
-          {{--<hr>--}}
-        {{--@endif--}}
-        @if(count($contact->tags))
-          <p>
-            <i class="fa fa-tags margin-r-5 text-muted"></i>
-            @foreach($contact->tags as $tag)
-                <span class="label label-primary">{{ $tag->name }}</span>
-            @endforeach
-          </p>
-          <hr>
-        @endif
-
         @if(!empty($contact->notes))
-            <p><i class="fa fa-file-text-o margin-r-5 text-muted"></i>{{ $contact->notes }}</p>
+            <li class="list-group-item">
+                <i class="fa fa-file-text-o margin-r-5 text-muted"></i>{{ $contact->notes }}
+            </li>
         @endif
-
+      </ul>
     </div>
     <!-- /.box-body -->
   </div>

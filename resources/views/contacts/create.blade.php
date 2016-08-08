@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('contentheader_title')
-Contacts
+Add new Contact
 @endsection
 
 @section('main-content')
@@ -52,7 +52,7 @@ Contacts
         <div class="form-group">
             <label for="company" class="col-sm-2 control-label text-muted">Company</label>
 
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <select name="company_id" tabindex="5" class="form-control select2 select2-hidden-accessible" data-placeholder="Select a company">
                     <option value="">- none -</option>
                     @foreach($companies as $company)
@@ -62,7 +62,7 @@ Contacts
             </div>
 
             <label for="company" class="col-sm-1 control-label text-muted">Role</label>
-            <div class="col-sm-6">
+            <div class="col-sm-5">
                 <input tabindex="6" class="form-control" name="role" id="position" placeholder="Store manager" type="text">
             </div>
         </div>
@@ -80,6 +80,7 @@ Contacts
             <label for="notes" class="col-sm-2 control-label text-muted">Notes</label>
 
             <div class="col-sm-10">
+
                 <textarea tabindex="8" class="form-control" name="notes" id="notes" placeholder="Notes about contact"></textarea>
             </div>
         </div>
