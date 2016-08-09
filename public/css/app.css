@@ -17,13 +17,15 @@ h1.page-title {
   margin: 10px 0px 10px 0px;
 }
 .dropdown-menu > li > a {
-  padding: 0px 10px;
+  padding: 3px 10px 3px 10px;
+}
+.dropdown-menu > li > a:hover {
+  background-color: transparent;
+  color: #080808;
+  cursor: pointer;
 }
 .btn-options .active {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-.dropdown-menu {
-  top: 127%;
 }
 .context-menu.dropdown {
   position: absolute;
@@ -31,19 +33,6 @@ h1.page-title {
 .context-menu ul {
   left: auto;
   right: 0;
-}
-.btn-group > .dropdown-menu:before,
-.dropdown-toggle > .dropdown-menu:before,
-.dropdown > .dropdown-menu:before {
-  position: absolute;
-  top: -8px;
-  left: auto;
-  right: 0;
-  display: inline-block !important;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid #e0e0e0;
-  border-left: 8px solid transparent;
-  content: '';
 }
 
 /*# sourceMappingURL=app.css.map */

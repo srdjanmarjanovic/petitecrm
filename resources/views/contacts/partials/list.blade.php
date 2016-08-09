@@ -1,14 +1,14 @@
 <div class="col-md-9">
     <div class="box box-solid">
-        <div class="box-header with-border">
-          <form action="#" method="get">
-              <div class="input-group">
-                  <input class="form-control" placeholder="{{ trans('adminlte_lang::message.search') }}" type="text" name="q" id="q">
-                  <span class="input-group-btn">
-                    <button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                  </span>
-              </div>
-          </form>
+        <div class="box-header">
+          {{--<form action="#" method="get">--}}
+              {{--<div class="input-group">--}}
+                  {{--<input class="form-control" placeholder="{{ trans('adminlte_lang::message.search') }}" type="text" name="q" id="q">--}}
+                  {{--<span class="input-group-btn">--}}
+                    {{--<button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>--}}
+                  {{--</span>--}}
+              {{--</div>--}}
+          {{--</form>--}}
 
             @if($contacts->count())
                 <div class="mailbox-controls">
@@ -33,8 +33,12 @@
               @if($contacts->count())
                 @foreach($contacts as $contact)
                   <tr>
-                    <td><div aria-disabled="false" aria-checked="false" style="position: relative;" class="icheckbox_flat-blue"><input style="position: absolute; opacity: 0;" type="checkbox"><ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins></div></td>
-                    <td class="mailbox-star" title="{{ $contact->type }}"><i class="fa {{ $contact->getTypeClass() }} text-yellow"></i></td>
+                    <td class="mailbox-star">
+                        <input type="checkbox" value="{{ $contact->id }}" name="bulkcontacts[]"><span>&nbsp;</span>
+                        <i class="fa {{ $contact->getTypeClass() }} text-yellow"></i>
+                    </td>
+                    {{--<td><div aria-disabled="false" aria-checked="false" style="position: relative;" class="icheckbox_flat-blue"><input style="position: absolute; opacity: 0;" type="checkbox"><ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins></div></td>--}}
+                    {{--<td class="mailbox-star" title="{{ $contact->type }}"><i class="fa {{ $contact->getTypeClass() }} text-yellow"></i></td>--}}
                     <td class="mailbox-name">
                         <a href="{{ route('contact.single', ['id' => $contact->id]) }}">
                             {{ $contact->getDisplayName() }}
@@ -57,8 +61,8 @@
                                 </span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                <li><a href="{{ route('contact.edit', $contact->id) }}">Edit</a></li>
-                                <li><a href="#">Delete</a></li>
+                                <li><a href="{{ route('contact.edit', $contact->id) }}"><i class="fa fa-pencil"></i> Edit</a></li>
+                                <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
                             </ul>
                         </div>
                     </td>   
