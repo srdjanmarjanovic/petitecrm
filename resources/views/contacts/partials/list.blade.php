@@ -28,7 +28,7 @@
 
         <div class="box-body">
           <div class="table-responsive mailbox-messages">
-            <table class="table table-hover">
+            <table class="table">
               <tbody>
               @if($contacts->count())
                 @foreach($contacts as $contact)
@@ -50,10 +50,10 @@
                     </td>
                     <td class="mailbox-date text-muted text-right" title="{{ $contact->created_at }}"><small>{{ $contact->created_at->diffForHumans() }}</small></td>
                     <td>
-                        <div class="dropdown">
+                        <div class="dropdown context-menu">
                             <a id="dLabel" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                                 <span class="label label-default">
-                                    <i class="fa fa-caret-down text-info"></i>
+                                    <i class="fa fa-ellipsis-h"></i>
                                 </span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dLabel">
