@@ -118,6 +118,7 @@ class ContactController extends Controller
      */
     public function update(EditContactRequest $request, $id)
     {
+	// @todo tags
         $contact = Contact::findOrFail($id);
         $contact->update($request->except(['_method', '_token']));
 

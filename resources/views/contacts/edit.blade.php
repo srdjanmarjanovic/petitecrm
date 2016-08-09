@@ -75,7 +75,7 @@ Edit {{ $contact->getDisplayName() }}
             <div class="form-group">
                 <label for="inputSkills" class="col-sm-2 control-label text-muted">Tags</label>
                 <div class="col-sm-10">
-                    {{  Form::select('tags', $tags->lists('name', 'id'), $contact->tags->pluck('id')->all(), ['multiple', 'id' =>'tags', 'tabindex' => 8, 'class' => 'form-control select2 select2-hidden-accessible']) }}
+                    {{  Form::select('tags', $tags->lists('name', 'id'), $contact->tags->pluck('id')->all(), ['multiple' => 'multiple', 'id' =>'tags', 'name' => 'tags[]' ,'tabindex' => 8, 'class' => 'form-control select2 select2-hidden-accessible']) }}
                 </div>
             </div>
 
