@@ -15,20 +15,29 @@
         <small>@if(!empty($contact->role)) {{ $contact->role }} in @endif @if($contact->company) {{ $contact->company->name }} @endif</small>
       </p>
 
-      <ul class="list-group list-group-unbordered">
-        <li class="list-group-item">
-          Messages <b><a class="pull-right">1,322</a></b>
-        </li>
-        <li class="list-group-item">
-          Engagement <b><a class="pull-right text-warning">45%</a></b>
-        </li>
-        <li class="list-group-item">
-          Rapportivenes <b><a class="pull-right text-success">80%</a></b>
-        </li>
-      </ul>
-
-      {{-- @TODO point this link to new message form --}}
-      <a href="#" class="btn btn-flat btn-primary btn-block"><b><i class="fa fa-envelope"></i> Message</b></a>
+        <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+              Messages <b><a class="pull-right">1,322</a></b>
+            </li>
+            <li class="list-group-item">
+              Engagement <b><a class="pull-right text-warning">45%</a></b>
+            </li>
+            <li class="list-group-item">
+              Rapportivenes <b><a class="pull-right text-success">80%</a></b>
+            </li>
+        </ul>
+        <div class="row margin-bottom">
+            <div class="col-xs-12  btn-group btn-group-justified">
+                <a href="#" class="btn btn-flat btn-default"><b><i class="fa fa-phone" aria-hidden="true"></i> Call</b></a>
+                <a href="#" class="btn btn-flat btn-default"><b><i class="fa fa-paper-plane"></i> Send SMS</b></a>
+            </div>
+        </div>
+        {{-- @TODO point this link to new message form --}}
+        <div class="row">
+            <div class="col-xs-12">
+                <a href="#" class="btn btn-flat btn-primary btn-block"><b><i class="fa fa-envelope-o"></i> Send e-mail</b></a>
+            </div>
+        </div>
     </div>
     <!-- /.box-body -->
   </div>

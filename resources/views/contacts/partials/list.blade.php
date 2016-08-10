@@ -69,6 +69,10 @@
                                 </span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <li><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>Send e-mail</a></li>
+                                <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i>Call</a></li>
+                                <li><a href="#"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>Send SMS</a></li>
+                                <li role="separator" class="divider"></li>
                                 <li><a href="{{ route('contact.edit', $contact->id) }}"><i class="fa fa-pencil"></i> Edit</a></li>
                                 <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
                             </ul>
