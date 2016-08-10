@@ -59,13 +59,11 @@
                     <td class="mailbox-subject">
 
                     </td>
-                    <td class="mailbox-date text-muted text-right" title="{{ $contact->created_at }}"><small>{{ $contact->created_at->diffForHumans() }}</small></td>
+                    <td class="mailbox-date text-muted text-right" title="{{ $contact->updated_at }}"><small>{{ $contact->updated_at->diffForHumans() }}</small></td>
                     <td>
                         <div class="dropdown context-menu">
-                            <a id="dLabel" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                                <span class="label label-default">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                </span>
+                            <a class="label" id="dLabel" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                                <i class="fa fa-ellipsis-h text-muted"></i>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dLabel">
                                 <li><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>Send e-mail</a></li>

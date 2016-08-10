@@ -21,7 +21,24 @@ class Contact extends Model
      * @var array
      */
     protected $dates = [
-        'created_at'
+        'created_at',
+        'updated_at'
+    ];
+
+    /**
+     * Mass assignment allowed fields.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'phone',
+        'company_id',
+        'role',
+        'notes',
+        'type'
     ];
 
 

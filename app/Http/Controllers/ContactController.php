@@ -23,17 +23,6 @@ class ContactController extends Controller
         $this->middleware('auth');
     }
 
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'email',
-        'phone',
-        'company_id',
-        'role',
-        'notes',
-        'type'
-    ];
-
     /**
      * Display a listing of the resource.
      *
@@ -118,11 +107,11 @@ class ContactController extends Controller
      */
     public function update(EditContactRequest $request, $id)
     {
-	// @todo tags
         $contact = Contact::findOrFail($id);
         $contact->update($request->except(['_method', '_token']));
+        $contact->tags()->sync($request->get('tags', []));
 
-        return redirect(route('contact.show', $id));
+        return redirect(route('contact.single', $id));
     }
 
     /**
