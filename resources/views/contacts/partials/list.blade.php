@@ -41,11 +41,10 @@
                     {{--<td class="mailbox-star" title="{{ $contact->type }}"><i class="fa {{ $contact->getTypeClass() }} text-yellow"></i></td>--}}
                     <td class="mailbox-name">
                         <i class="fa {{ $contact->getTypeClass() }} text-yellow" title="{{ ucfirst($contact->type) }}"></i>
-                        <a class="lead" href="{{ route('contact.single', ['id' => $contact->id]) }}">
+                        <a href="{{ route('contact.single', ['id' => $contact->id]) }}">
                             {{ $contact->getDisplayName() }}
                         </a>
-
-                         @if($contact->getRoleInCompany())
+                        @if($contact->getRoleInCompany())
                             <div>
                                   <small class="text-muted">
                                      {{ $contact->getRoleInCompany() }}

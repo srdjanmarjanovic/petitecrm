@@ -90,4 +90,26 @@ class Contact extends Model
                 return 'fa-star';
         }
     }
+
+    /**
+     * Return role in company for contact.
+     */
+    public function getRoleInCompany() 
+    {
+        $bits = [];
+
+        if (!empty($this->role)) {
+            $bits[] = $this->role;
+        }
+
+        if (!empty($this->company)) {
+            $bits[] = $this->company->name;
+        }        
+
+        if (isset($bits[0]) && isset($bits[1])) {
+            array_splice($bits, 1, 0, 'in');
+        }
+
+        return implode(' ' , $bits);
+    }
 }
