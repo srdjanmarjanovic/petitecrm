@@ -31,7 +31,7 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
-        $contacts = Contact::orderBy('created_at', 'desc')->paginate(10);
+        $contacts = Contact::orderBy('updated_at', 'desc')->paginate(10);
         $companies = Company::take(5)->get();
         $tags = Tag::take(5)->get();
 
