@@ -89,10 +89,10 @@ Edit {{ $contact->getDisplayName() }}
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-0 col-sm-offset-6 col-xs-12 col-sm-3">
-                    <button tabindex="8" type="submit" class="btn btn-block btn-flat btn-sm">Cancel</button>
+                <div class="col-xs-offset-0 col-sm-offset-6 col-xs-12 col-sm-3 col-md-offset-8 col-lg-offset-8 col-md-2 col-lg-2">
+                    <button tabindex="8" type="submit" class="btn btn-default btn-block btn-flat btn-sm">Cancel</button>
                 </div>
-                <div class="col-xs-12 col-sm-3">
+                <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
                     <button tabindex="8" type="submit" class="btn btn-block btn-flat btn-primary btn-sm"><i class="fa fa-check"></i> Done</button>
                 </div>
             </div>
