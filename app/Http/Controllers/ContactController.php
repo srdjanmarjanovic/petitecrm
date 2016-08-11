@@ -109,7 +109,6 @@ class ContactController extends Controller
     {
         $contact = Contact::findOrFail($id);
         $contact->update($request->except(['_method', '_token']));
-        $contact->tags()->sync($request->get('tags', []));
 
         return redirect(route('contact.single', $id));
     }
