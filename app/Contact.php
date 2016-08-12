@@ -2,10 +2,42 @@
 
 namespace App;
 
+use App\Managers\TagManager;
 use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
+    /**
+     * Create contact instance.
+     *
+     * @param array $attributes
+     * @return void|static
+     */
+    public static function create(array $attributes = [])
+    {
+        /** @var Contact $instance */
+        $instance =  parent::create($attributes);
+        $instance->setTags($attributes['tags']);
+
+        return $instance;
+    }
+
+    /**
+     * Update contact.
+     *
+     * @param array $attributes
+     * @param array $options
+     * @return bool|int
+     */
+    public function update(array $attributes = [], array $options = [])
+    {
+        parent::update($attributes, $options);
+
+        $this->setTags($attributes['tags']);
+
+        return $this;
+    }
+
     /**
      * Set default attribute values.
      *
@@ -128,5 +160,17 @@ class Contact extends Model
         }
 
         return implode(' ' , $bits);
+    }
+
+    /**
+     * Set tags for new or existing contact.
+     *
+     * @param array $tags
+     */
+    private function setTags($tags)
+    {
+        $tag_manager = new TagManager();
+
+        $this->tags()->sync($tag_manager->getTagIdsFromRequest($tags));
     }
 }

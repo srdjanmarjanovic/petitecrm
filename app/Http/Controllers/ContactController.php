@@ -31,7 +31,7 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
-        $contacts = Contact::orderBy('created_at', 'desc')->paginate(10);
+        $contacts = Contact::orderBy('updated_at', 'desc')->paginate(10);
         $companies = Company::take(5)->get();
         $tags = Tag::take(5)->get();
 
@@ -109,7 +109,6 @@ class ContactController extends Controller
     {
         $contact = Contact::findOrFail($id);
         $contact->update($request->except(['_method', '_token']));
-        $contact->tags()->sync($request->get('tags', []));
 
         return redirect(route('contact.single', $id));
     }
