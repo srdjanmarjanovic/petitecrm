@@ -92,9 +92,15 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
+        /** @var Contact $contact */
         $contact = Contact::findOrFail($id);
+
+        /** @var Company[] $companies */
         $companies = Company::all();
+
+        /** @var Tag[] $tags */
         $tags = Tag::all();
+
         return view('contacts.edit', compact('contact', 'companies', 'tags'));
     }
 
@@ -107,6 +113,7 @@ class ContactController extends Controller
      */
     public function update(EditContactRequest $request, $id)
     {
+        /** @var Contact $contact */
         $contact = Contact::findOrFail($id);
         $contact->update($request->except(['_method', '_token']));
 
@@ -121,7 +128,11 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
+        /** @var Contact $contact */
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
 
+        return back();
     }
 
     /**

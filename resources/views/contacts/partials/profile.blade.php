@@ -28,14 +28,14 @@
         </ul>
         <div class="row margin-bottom">
             <div class="col-xs-12  btn-group btn-group-justified">
-                <a href="#" class="btn btn-flat btn-default"><b><i class="fa fa-phone" aria-hidden="true"></i> Call</b></a>
-                <a href="#" class="btn btn-flat btn-default"><b><i class="fa fa-paper-plane"></i> Send SMS</b></a>
+                <a href="#" class="btn btn-flat btn-default"><i class="fa fa-phone" aria-hidden="true"></i> Call</a>
+                <a href="#" class="btn btn-flat btn-default"><i class="fa fa-paper-plane"></i> Send SMS</a>
             </div>
         </div>
         {{-- @TODO point this link to new message form --}}
         <div class="row">
             <div class="col-xs-12">
-                <a href="#" class="btn btn-flat btn-primary btn-block"><b><i class="fa fa-envelope-o"></i> Send e-mail</b></a>
+                <a href="#" class="btn btn-flat btn-primary btn-block"><i class="fa fa-envelope-o"></i> Send e-mail</a>
             </div>
         </div>
     </div>
