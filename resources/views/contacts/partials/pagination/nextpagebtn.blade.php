@@ -1,1 +1,1 @@
-<a href="{{ $contacts->nextPageUrl() }}" class="btn btn-default @if(!$contacts->hasMorePages()) disabled @endif btn-xs"><i class="fa fa-chevron-right"></i></a>
+<a href="{{ $contacts->appends(\Illuminate\Support\Facades\Request::input())->nextPageUrl() }}" class="btn btn-default @if(!$contacts->hasMorePages()) disabled @endif btn-xs"><i class="fa fa-chevron-right"></i></a>

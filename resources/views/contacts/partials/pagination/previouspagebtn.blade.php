@@ -1,1 +1,1 @@
-<a href="{{ $contacts->previousPageUrl() }}" class="btn btn-default @if(!$contacts->previousPageUrl()) disabled @endif btn-xs"><i class="fa fa-chevron-left"></i></a>
+<a href="{{ $contacts->appends(\Illuminate\Support\Facades\Request::input())->previousPageUrl() }}" class="btn btn-default @if(!$contacts->previousPageUrl()) disabled @endif btn-xs"><i class="fa fa-chevron-left"></i></a>
