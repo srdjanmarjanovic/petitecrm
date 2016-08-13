@@ -32,6 +32,7 @@ Route::resource('contacts', 'ContactController', [
         'update' => 'contact.update',
         'edit' => 'contact.edit',
         'store' => 'contact.save',
+        'destroy' => 'contact.delete',
     ],
     'middleware' => 'auth'
 ]);

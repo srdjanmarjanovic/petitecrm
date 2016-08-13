@@ -9,11 +9,10 @@ Edit {{ $contact->getDisplayName() }}
 @endsection
 
 @section('main-content')
-
     <div class="col-xs-8 col-xs-offset-2">
         {{ Form::model($contact, ['class' => 'form-horizontal', 'route' => ['contact.update', $contact->id], 'method' => 'put']) }}
-            {!! csrf_field(); !!}
 
+            <input name="_back" type="hidden" value="{{ URL::previous() }}"/>
             <div class="form-group">
                 <label for="first_name" class="col-sm-2 control-label text-muted">Type</label>
                 <div class="col-sm-10">
@@ -31,24 +30,36 @@ Edit {{ $contact->getDisplayName() }}
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group {{ $errors->has('first_name') || $errors->has('last_name') ? 'has-error' : '' }}">
                 <label for="first_name" class="col-sm-2 control-label text-muted">Name</label>
                 <div class="col-sm-10">
                     <div class="row">
                         <div class="col-xs-4">
-                            {{ Form::text('first_name', null, ['class' => 'form-control', 'id' => 'first_name', 'placeholder' => 'Marco', 'tabindex' => 2]) }}
+                            {{ Form::text('first_name', null, ['class' => 'form-control ', 'id' => 'first_name', 'placeholder' => 'Marco', 'tabindex' => 2]) }}
+
                         </div>
                         <div class="col-xs-8">
                             {{ Form::text('last_name', null, ['class' => 'form-control', 'id' => 'last_name', 'placeholder' => 'Polo', 'tabindex' => 3]) }}
+                        </div>
+                        <div class="col-xs-12">
+                            @if($errors->has('first_name'))
+                                <span class="help-block">{{ $errors->first('first_name') }}</span>
+                            @endif
+                            @if($errors->has('last_name'))
+                                <span class="help-block">{{ $errors->first('last_name') }}</span>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group {{ $errors->has('email') }}">
                 <label for="email" class="col-sm-2 control-label text-muted">Email</label>
                 <div class="col-sm-10">
                     {{ Form::email('email', null, ['class' => 'form-control', 'id' => 'email', 'tabindex' => 4]) }}
+                    @if($errors->has('email'))
+                        <span class="help-block">{{ $errors->first('email') }}</span>
+                    @endif
                 </div>
             </div>
 

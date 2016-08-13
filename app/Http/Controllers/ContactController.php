@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Contact;
-use App\Http\Requests\CreateContactRequest;
-use App\Http\Requests\EditContactRequest;
+use App\Http\Requests\ManageContactRequest;
 use App\Tag;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 
 class ContactController extends Controller
 {
@@ -46,31 +46,25 @@ class ContactController extends Controller
     public function create()
     {
         $companies = Company::all();
-        return view('contacts.create', compact('companies'));
+        $tags = Tag::all();
+        return view('contacts.create', compact('companies', 'tags'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param CreateContactRequest $request
+     * @param ManageContactRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateContactRequest $request)
+    public function store(ManageContactRequest $request)
     {
-        $contact = new Contact();
+        $contact = Contact::create($request->except('_token', '_method'));
 
-        $contact->first_name = $request->get('first_name');
-        $contact->last_name = $request->get('last_name');
-        $contact->email = $request->get('email');
-        $contact->phone = $request->get('phone');
-        $contact->company_id = $request->get('company_id');
-        $contact->role = $request->get('role');
-        $contact->save();
+        if ($contact) {
+            return redirect(route('contacts.all'))->withStatus(['class' => 'success', 'message' => 'Success message']);
+        }
 
-        // @TODO attach tags
-        // @TODO set note
-
-        return redirect(route('contacts.all'))->withStatus(['class' => 'success', 'message' => 'Success message']);
+        return redirect()->back(500);
     }
 
     /**
@@ -107,17 +101,19 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param EditContactRequest $request
+     * @param ManageContactRequest $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditContactRequest $request, $id)
+    public function update(ManageContactRequest $request, $id)
     {
         /** @var Contact $contact */
         $contact = Contact::findOrFail($id);
-        $contact->update($request->except(['_method', '_token']));
+        $contact->update($request->except(['_method', '_token', '_back']));
 
-        return redirect(route('contact.single', $id));
+        $redirect = Input::get('_back',  route('contact.single', $id));
+
+        return redirect($redirect);
     }
 
     /**
@@ -128,11 +124,18 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        /** @var Contact $contact */
-        $contact = Contact::findOrFail($id);
-        $contact->delete();
+        try {
+            /** @var Contact $contact */
+            $contact = Contact::findOrFail($id);
+            $result = $contact->delete();
+            if (!$result) {
+                throw new LogicException('Contact could not be deleted due to an error');
+            }
+        } catch(Exception $e) {
+            return response($e, 500);
+        }
 
-        return back();
+        return response('', 200);
     }
 
     /**

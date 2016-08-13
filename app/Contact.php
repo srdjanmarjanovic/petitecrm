@@ -17,8 +17,11 @@ class Contact extends Model
     {
         /** @var Contact $instance */
         $instance =  parent::create($attributes);
-        $instance->setTags($attributes['tags']);
 
+        if (isset($attributes['tags'])) {
+            $instance->setTags($attributes['tags']);
+        }
+        
         return $instance;
     }
 
@@ -33,7 +36,9 @@ class Contact extends Model
     {
         parent::update($attributes, $options);
 
-        $this->setTags($attributes['tags']);
+        if (isset($attributes['tags'])) {
+            $this->setTags($attributes['tags']);
+        }
 
         return $this;
     }

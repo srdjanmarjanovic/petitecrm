@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EditContactRequest extends Request
+class ManageContactRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,12 @@ class EditContactRequest extends Request
     public function rules()
     {
         return [
-            //
+            'first_name' => 'string|between:3,250',
+            'last_name' => 'string|between:3,250',
+            'email' => 'required|email',
+            'phone' => 'string|between:3,250',
+            'company_id' => 'exists:companies,id',
+            'role' => 'string|between:3,250',
         ];
     }
 }

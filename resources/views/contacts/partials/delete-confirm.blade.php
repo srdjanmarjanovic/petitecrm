@@ -9,8 +9,8 @@
         <small class="text-muted">This action can not be undone!</small>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-sm btn-default btn-flat" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-sm btn-danger btn-confirm btn-flat" data-action="{{ route('contact.delete', $contact->id) }}">Delete</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

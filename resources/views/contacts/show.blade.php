@@ -11,5 +11,37 @@
 
 @section('main-content')
     @include('contacts.partials.profile', compact('contact'))
-    @include('contacts.partials.delete-confirm')
+    @include('contacts.partials.delete-confirm', compact('contact'))
+@endsection
+
+@section('scripts')
+    @parent
+    <script>
+        $('#delete-confirm').on('show.bs.modal', function(me) {
+            var token = '{!! csrf_token()  !!}';
+            var $modal =  me;
+
+            $.ajaxSetup({
+                headers: { 'X-CSRF-Token' : token }
+            });
+
+            $(this).find('.btn-confirm').on('click', function(e) {
+                var btn_confirm = $(this);
+                var path = btn_confirm.data('action');
+
+                btn_confirm.addClass('disabled');
+
+                $.ajax({
+                    url: path,
+                    type: 'DELETE'
+                }).done(function(data) {
+                    $modal.modal('hide');
+                }).fail(function(data) {
+                    console.log('Nay :/');
+                }).always(function(data) {
+                    btn_confirm.removeClass('disabled');
+                });
+            });
+        });
+    </script>
 @endsection
