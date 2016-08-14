@@ -124,18 +124,19 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
+        /** @var Contact $contact */
+        $contact = Contact::findOrFail($id);
+
         try {
-            /** @var Contact $contact */
-            $contact = Contact::findOrFail($id);
             $result = $contact->delete();
             if (!$result) {
-                throw new LogicException('Contact could not be deleted due to an error');
+                throw new LogicException('Contact could not be deleted due to an unknown error');
             }
         } catch(Exception $e) {
-            return response($e, 500);
+            return response([$e->getMessage()],500)->json();
         }
 
-        return response('', 200);
+        return response()->json(['Deleted <em>' . $contact->getDisplayName() . '</em>']);
     }
 
     /**

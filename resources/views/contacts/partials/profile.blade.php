@@ -9,7 +9,7 @@
 
       <img class="profile-user-img img-responsive img-circle" src="{{asset('/img/user2-160x160.jpg')}}" alt="User profile picture">
 
-      <h3 class="profile-username text-center">{{ $contact->first_name }} {{ $contact->last_name }}</h3>
+      {{--<h3 class="profile-username text-center"></h3>--}}
 
       <p class="text-muted text-center">
         <small>@if(!empty($contact->role)) {{ $contact->role }} in @endif @if($contact->company) {{ $contact->company->name }} @endif</small>

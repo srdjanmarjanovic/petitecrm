@@ -10,7 +10,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-default btn-flat" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-sm btn-danger btn-confirm btn-flat" data-action="{{ route('contact.delete', $contact->id) }}">Delete</button>
+        <button type="button" class="btn btn-sm btn-danger btn-confirm btn-flat">Delete</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

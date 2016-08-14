@@ -71,7 +71,7 @@
                                 <li><a href="#"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>Send SMS</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ route('contact.edit', $contact->id) }}"><i class="fa fa-pencil"></i> Edit</a></li>
-                                <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#delete-confirm"  data-back="{{ Request::fullUrl() }}" data-action="{{ route('contact.delete', $contact->id) }}"><i class="fa fa-trash-o"></i> Delete</a></li>
                             </ul>
                         </div>
                     </td>   
