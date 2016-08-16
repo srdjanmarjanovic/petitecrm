@@ -133,13 +133,13 @@ class ContactController extends Controller
         try {
             $result = $contact->delete();
             if (!$result) {
-                throw new LogicException('Contact could not be deleted due to an unknown error');
+                throw new LogicException();
             }
         } catch(Exception $e) {
-            return redirect($back)->withErrors( '? Bummer! Something went wrong :(');
+            return redirect($back)->withErrors('? Bummer! Something went wrong :(');
         }
 
-        return redirect($back)->with('status', 'Contact deleted successfully!');
+        return redirect($back)->with('status', ['type' => 'success', 'message' => 'Contact deleted successfully!']);
     }
 
     /**

@@ -31,14 +31,12 @@ desired effect
 -->
 <body class="skin-blue sidebar-mini">
 <div class="wrapper">
-
     @include('layouts.partials.mainheader')
 
     @include('layouts.partials.sidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-
         @include('layouts.partials.contentheader')
 
         <!-- Main content -->
@@ -62,6 +60,18 @@ desired effect
 
 @section('scripts')
     @include('layouts.partials.scripts')
+    {{-- @TODO PLEASE FUTURE ME, REFACTOR THIS, WHATEVER THIS IS! --}}
+    @if(Session::has('status'))
+        <script type="text/javascript">
+            var message = '{!! Session::get("status")["message"] !!}';
+            var type = '{!! Session::get("status")["type"] !!}';
+            $.notify({
+                message: message
+            },{
+                type: type
+            });
+        </script>
+    @endif
 @show
 
 </body>

@@ -10,7 +10,6 @@
 <script src="{{ asset('/plugins/slimScroll/jquery.slimscroll.js') }}" type="text/javascript"></script>
 <!-- Bootstrap Notifications -->
 <script src="{{ asset('/plugins/bootstrap-notify/bootstrap-notify.min.js') }}" type="text/javascript"></script>
-
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
