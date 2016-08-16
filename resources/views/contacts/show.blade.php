@@ -11,36 +11,15 @@
 @endsection
 
 @section('main-content')
-    @include('contacts.partials.profile', compact('contact'))
-    @include('contacts.partials.delete-confirm', compact('contact'))
+    @include('contacts.partials.profile')
+    @include('contacts.partials.delete.form', ['backpath' => URL::previous()])
+    @include('contacts.partials.delete.confirm')
 @endsection
 
 @section('scripts')
     @parent
-    <script>
-        $('#delete-confirm').on('show.bs.modal', function(me) {
-            var token = '{!! csrf_token()  !!}';
-            var path = $(me.relatedTarget).data('action');
-
-            $.ajaxSetup({
-                headers: { 'X-CSRF-Token' : token }
-            });
-
-            $(this).find('.btn-confirm').on('click', function(e) {
-                var btn_confirm = $(this);
-                btn_confirm.addClass('disabled');
-
-                $.ajax({
-                    url: path,
-                    type: 'DELETE'
-                }).done(function(data) {
-                    $('#delete-confirm').modal('hide');
-                }).fail(function(data) {
-                    $('#delete-confirm .modal-body').text('<p class="text-error lead">There was an error while performing this action:</p>' + '<p>' + data + '</p>');
-                }).always(function(data) {
-                    btn_confirm.removeClass('disabled');
-                });
-            });
-        });
+    <script type="text/javascript">
+        $('.dropdown-toggle').dropdown();
+        @include('contacts.partials.delete.js')
     </script>
 @endsection

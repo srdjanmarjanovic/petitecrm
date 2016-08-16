@@ -6,10 +6,12 @@ use App\Company;
 use App\Contact;
 use App\Http\Requests\ManageContactRequest;
 use App\Tag;
+use Exception;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
+use LogicException;
 
 class ContactController extends Controller
 {
@@ -61,10 +63,10 @@ class ContactController extends Controller
         $contact = Contact::create($request->except('_token', '_method'));
 
         if ($contact) {
-            return redirect(route('contacts.all'))->withStatus(['class' => 'success', 'message' => 'Success message']);
+            return redirect(route('contacts.all'))->with('status', ['type' => 'success', 'message' => 'Contact added successfully!']);
         }
 
-        return redirect()->back(500);
+        return redirect()->back()->withErrors(['error' => '? Bummer! Something went wrong :(']);
     }
 
     /**
@@ -126,6 +128,7 @@ class ContactController extends Controller
     {
         /** @var Contact $contact */
         $contact = Contact::findOrFail($id);
+        $back = Input::get('backpath') ? Input::get('backpath') : back();
 
         try {
             $result = $contact->delete();
@@ -133,10 +136,10 @@ class ContactController extends Controller
                 throw new LogicException('Contact could not be deleted due to an unknown error');
             }
         } catch(Exception $e) {
-            return response([$e->getMessage()],500)->json();
+            return redirect($back)->withErrors( '? Bummer! Something went wrong :(');
         }
 
-        return response()->json(['Deleted <em>' . $contact->getDisplayName() . '</em>']);
+        return redirect($back)->with('status', 'Contact deleted successfully!');
     }
 
     /**
