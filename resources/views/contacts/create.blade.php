@@ -119,14 +119,8 @@ Add new Contact
             $(".select2").select2({
                 allowClear: true,
                 width: '100%',
-                placeholder: "- select -"
-            });
-
-            $("#tags").select2({
-                tags: true,
-                width: '100%',
-                allowClear: true,
-                placeholder: "- select -"
+                placeholder: "- select -",
+                tags: true
             });
         });
     </script>
