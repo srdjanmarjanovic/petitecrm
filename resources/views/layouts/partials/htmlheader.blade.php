@@ -22,7 +22,7 @@
     -->
     <link href="{{ asset('/css/skins/skin-blue.css') }}" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
-    <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/plugins/iCheck/minimal/blue.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- App style -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet" type="text/css" />
