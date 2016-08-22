@@ -21,6 +21,11 @@
 
 @section('main-content')
     @include('contacts.partials.list')
+    <div class="col-md-3">
+        @include('companies.partials.sidebar-block')
+        @include('tags.partials.sidebar-block')
+    </div>
+
     @include('contacts.partials.delete.form', ['backpath' => Request::fullUrl()])
     @include('contacts.partials.delete.confirm')
 @endsection

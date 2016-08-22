@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use LogicException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ContactController extends Controller
 {
@@ -34,10 +35,16 @@ class ContactController extends Controller
     public function index(Request $request)
     {
         $contacts = Contact::orderBy('updated_at', 'desc')->paginate(10);
-        $companies = Company::take(5)->get();
-        $tags = Tag::take(5)->get();
 
-        return view('contacts.index', ['contacts' => $contacts, 'companies' => $companies, 'tags' => $tags]);
+        $companies = Company::has('contacts')->get()->sortByDesc(function($company) {
+            return count($company->contacts);
+        });
+
+        $tags = Tag::has('contacts')->get()->sortByDesc(function($tag) {
+            return count($tag->contacts);
+        });
+
+        return view('contacts.index', compact('contacts', 'companies', 'tags'));
     }
 
     /**
@@ -62,7 +69,7 @@ class ContactController extends Controller
     {
         $contact = Contact::create($request->except('_token', '_method'));
 
-        if ($contact) {
+        if ($contact && $contact instanceof Contact) {
             return redirect(route('contacts.all'))->with('status', ['type' => 'success', 'message' => 'Contact added successfully!']);
         }
 

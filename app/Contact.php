@@ -3,15 +3,32 @@
 namespace App;
 
 use App\Managers\TagManager;
+use Elasticquent\ElasticquentTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
+    use ElasticquentTrait;
+
+    public static function boot()
+    {
+        parent::boot();;
+
+        static::saved(function (Contact $contact) {
+            $contact->load('tags', 'company');
+//            $contact->addToIndex();
+        });
+
+        static::deleted(function (Contact $contact) {
+//            $contact->removeFromIndex();
+        });
+    }
+
     /**
      * Create contact instance.
      *
      * @param array $attributes
-     * @return void|static
+     * @return void|Contact
      */
     public static function create(array $attributes = [])
     {
@@ -78,6 +95,10 @@ class Contact extends Model
         'type'
     ];
 
+    protected $with = [
+        'tags',
+        'company'
+    ];
 
     /**
      * Company relationship.

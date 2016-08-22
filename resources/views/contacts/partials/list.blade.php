@@ -113,8 +113,3 @@
     </div>
   <!-- /. box -->
 </div>
-<!-- /.col -->
-<div class="col-md-3">
-    @include('companies.partials.sidebar-block')
-    @include('tags.partials.sidebar-block')
-</div>

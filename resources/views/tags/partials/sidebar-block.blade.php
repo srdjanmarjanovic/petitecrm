@@ -8,7 +8,11 @@
     <div class="box-body no-padding">
         <ul class="nav nav-pills nav-stacked">
         @foreach($tags as $tag)
-            <li><a href="#">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->contacts) }}</span></a></li>
+            @if(Request::is('contacts/tag/' . $tag->id))
+                <li class="active"><a href="{{ route('contacts.all') }}">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->contacts) }}</span></a></li>
+            @else
+                <li><a href="{{ route('tag_contacts', $tag->id) }}">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->contacts) }}</span></a></li>
+            @endif
         @endforeach
         </ul>
     </div>
