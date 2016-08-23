@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
+use App\Tag;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,7 +17,13 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('companies.index');
+        // @TODO implement industries filter
+
+        $tags = Tag::has('contacts')->get()->sortByDesc(function($tag) {
+            return count($tag->contacts);
+        });
+
+        return view('companies.index', compact('tags'));
     }
 
     /**
