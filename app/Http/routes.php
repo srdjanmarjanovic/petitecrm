@@ -38,7 +38,6 @@ Route::resource('contacts', 'ContactController', [
 ]);
 
 
-
 Route::resource('companies', 'CompanyController', [
     'names' => [
         'create' => 'company.create',
@@ -52,10 +51,11 @@ Route::resource('companies', 'CompanyController', [
 ]);
 
 Route::group(['prefix' => 'contacts', 'middleware' => 'auth'], function () {
+    Route::get('company/none', ['as' => 'no_company_contacts', 'uses' => 'ContactsFilterController@filterWithoutCompany']);
     Route::get('company/{id}', ['as' => 'company_contacts', 'uses' => 'ContactsFilterController@filterByCompany']);
+    Route::get('tag/none', ['as' => 'no_tag_contacts', 'uses' => 'ContactsFilterController@filterWithoutTags']);
     Route::get('tag/{id}', ['as' => 'tag_contacts', 'uses' => 'ContactsFilterController@filterByTag']);
 });
-
 
 Route::resource('lists', 'ListController', [
     'names' => [

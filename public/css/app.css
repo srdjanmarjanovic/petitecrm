@@ -22,7 +22,7 @@ h1.page-title {
 .dropdown-menu > li > a:hover {
   background-color: transparent;
   color: #080808;
-  cursor: pointer;
+  cursor: crosshair;
 }
 .btn-options .active {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
@@ -33,6 +33,9 @@ h1.page-title {
 .context-menu ul {
   left: auto;
   right: 0;
+}
+.sidebar-block li.active {
+  background: lightyellow;
 }
 
 /*# sourceMappingURL=app.css.map */

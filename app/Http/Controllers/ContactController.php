@@ -17,16 +17,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ContactController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @param Request $request
@@ -44,7 +34,10 @@ class ContactController extends Controller
             return count($tag->contacts);
         });
 
-        return view('contacts.index', compact('contacts', 'companies', 'tags'));
+        $no_tag_count = Contact::has('tags', '=', 0)->count();
+        $no_company_count = Contact::has('company', '=', 0)->count();
+
+        return view('contacts.index', compact('contacts', 'companies', 'tags', 'no_tag_count', 'no_company_count'));
     }
 
     /**
@@ -165,17 +158,5 @@ class ContactController extends Controller
     public function doImport()
     {
         dd('implement this');
-    }
-
-    /**
-     * @param $request
-     */
-    public function getFilterConditions($request)
-    {
-//        if (($filter = $request->get('filter')) && $ids = () ) {
-//            if (in_array(strtolower($filter), ['company', 'tag'])) {
-//                $conditions['filter'] = $filter;
-//            }
-//        }
     }
 }

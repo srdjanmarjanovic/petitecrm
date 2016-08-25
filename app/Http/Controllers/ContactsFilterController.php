@@ -11,6 +11,42 @@ use App\Http\Requests;
 
 class ContactsFilterController extends Controller
 {
+    public function filterWithoutCompany()
+    {
+        $contacts = Contact::has('company', '=', 0)->orderBy('updated_at', 'DESC')->paginate(10);
+
+        $companies = Company::has('contacts')->get()->sortByDesc(function($company) {
+            return count($company->contacts);
+        });
+
+        $tags = Tag::has('contacts')->get()->sortByDesc(function($tag) {
+            return count($tag->contacts);
+        });
+
+        $no_company_count = $contacts->count();
+        $no_tag_count = Contact::has('tags', '=', 0)->count();
+
+        return view('contacts.index', compact('contacts', 'companies', 'tags', 'no_tag_count', 'no_company_count')); 
+    }
+
+    public function filterWithoutTags()
+    {
+        $contacts = Contact::has('tags', '=', 0)->orderBy('updated_at', 'DESC')->paginate(10);
+
+        $companies = Company::has('contacts')->get()->sortByDesc(function($company) {
+            return count($company->contacts);
+        });
+
+        $tags = Tag::has('contacts')->get()->sortByDesc(function($tag) {
+            return count($tag->contacts);
+        });
+
+        $no_company_count = Contact::has('company', '=', 0)->count();
+        $no_tag_count = $contacts->count();
+        
+        return view('contacts.index', compact('contacts', 'companies', 'tags', 'no_tag_count', 'no_company_count')); 
+    }
+
     /**
      * Filter contacts by company.
      *
@@ -29,7 +65,10 @@ class ContactsFilterController extends Controller
             return count($tag->contacts);
         });
 
-        return view('contacts.index', compact('contacts', 'companies', 'tags'));
+        $no_company_count = Contact::has('company', '=', 0)->count();
+        $no_tag_count = Contact::has('tags', '=', 0)->count();
+
+        return view('contacts.index', compact('contacts', 'companies', 'tags', 'no_tag_count', 'no_company_count')); 
     }
 
     /**
@@ -52,6 +91,9 @@ class ContactsFilterController extends Controller
             return count($tag->contacts);
         });
 
-        return view('contacts.index', compact('contacts', 'companies', 'tags'));
+        $no_company_count = Contact::has('company', '=', 0)->count();
+        $no_tag_count = Contact::has('tags', '=', 0)->count();
+
+        return view('contacts.index', compact('contacts', 'companies', 'tags', 'no_tag_count', 'no_company_count')); 
     }
 }

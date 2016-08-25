@@ -33,7 +33,9 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        // @TODO implement industries
+        $tags = Tag::all();
+        return view('companies.create', compact('tags'));
     }
 
     /**
