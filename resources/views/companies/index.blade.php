@@ -18,7 +18,7 @@
 @endsection
 
 @section('main-content')
-{{--    @include('contacts.partials.list')--}}
+    @include('companies.partials.list')
     <div class="col-md-3">
 {{--        @include('companies.partials.sidebar-block')--}}
         @include('tags.partials.sidebar-block')

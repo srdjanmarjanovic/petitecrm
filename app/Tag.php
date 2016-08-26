@@ -22,4 +22,14 @@ class Tag extends Model
     {
         return $this->morphedByMany(Contact::class, 'taggable');
     }
+
+    /**
+     * Get all of the companies for the tag.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function companies()
+    {
+        return $this->morphedByMany(Company::class, 'taggable');
+    }
 }

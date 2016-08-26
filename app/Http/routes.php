@@ -37,7 +37,6 @@ Route::resource('contacts', 'ContactController', [
     'middleware' => 'auth'
 ]);
 
-
 Route::resource('companies', 'CompanyController', [
     'names' => [
         'create' => 'company.create',
@@ -46,6 +45,7 @@ Route::resource('companies', 'CompanyController', [
         'update' => 'company.update',
         'edit' => 'company.edit',
         'store' => 'company.save',
+        'destroy' => 'company.delete',
     ],
     'middleware' => 'auth'
 ]);

@@ -9,9 +9,9 @@
         <ul class="nav nav-pills nav-stacked">
             @foreach($tags as $tag)
                 @if(Request::is('contacts/tag/' . $tag->id))
-                    <li class="active"><a href="{{ route('contacts.all') }}">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->contacts) }}</span></a></li>
+                    <li class="active"><a href="{{ route('contacts.all') }}">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->{$context}) }}</span></a></li>
                 @else
-                    <li><a href="{{ route('tag_contacts', $tag->id) }}">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->contacts) }}</span></a></li>
+                    <li><a href="{{ route('tag_contacts', $tag->id) }}">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->{$context}) }}</span></a></li>
                 @endif
             @endforeach
             @if(Request::is('contacts/tag/none'))

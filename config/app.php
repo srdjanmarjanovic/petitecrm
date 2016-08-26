@@ -172,6 +172,10 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Elasticquent\ElasticquentServiceProvider::class,
 
+        /*
+        * User created providers...
+        */
+        App\Providers\ComposerServiceProvider::class,
     ],
 
     /*

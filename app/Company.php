@@ -7,13 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     /**
-     * Return contact relationship.
+     * Set the dates array so we can format them from a blade template.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at'
+    ];
+
+    /**
+     * Get all contacts for the company.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function contacts()
     {
         return $this->hasMany(Contact::class);
+    }
+
+    /**
+     * Get all of the tags for the company.
+     */
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 
     /**
@@ -38,6 +56,5 @@ class Company extends Model
         }
 
         return implode(', ', $bits);
-
     }
 }
