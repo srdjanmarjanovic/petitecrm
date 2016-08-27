@@ -23,16 +23,9 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = Company::orderBy('updated_at', 'desc')->paginate(10);
-        $context = 'companies';
         
         // @TODO implement industries filter
-
-        $tags = Tag::has('companies')->get()->sortByDesc(function($tag) {
-            return count($tag->companies);
-        });
-        $no_tag_count = Company::has('tags', '=', 0)->count();
-
-        return view('companies.index', compact('companies', 'tags', 'no_tag_count', 'context'));
+        return view('companies.index', compact('companies'))->with(['context' => $this->context]);
     }
 
     /**

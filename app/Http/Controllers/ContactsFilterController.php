@@ -47,13 +47,7 @@ class ContactsFilterController extends ContactController
     {
         $contacts = Contact::where('company_id', $id)->orderBy('updated_at', 'DESC')->paginate(10);
 
-        $companies = Company::has('contacts')->get()->sortByDesc(function($company) {
-            return count($company->contacts);
-        });
-
-        $no_company_count = Contact::has('company', '=', 0)->count();
-
-        return view('contacts.index', compact('contacts', 'companies', 'no_company_count'))->with(['context' => $this->context]); 
+        return view('contacts.index', compact('contacts'))->with(['context' => $this->context]); 
     }
 
     /**
@@ -68,12 +62,6 @@ class ContactsFilterController extends ContactController
                 $query->where('id', '=', $id);
             })->orderBy('updated_at', 'DESC')->paginate(10);
 
-        $companies = Company::has('contacts')->get()->sortByDesc(function($company) {
-            return count($company->contacts);
-        });
-
-        $no_company_count = Contact::has('company', '=', 0)->count();
-
-        return view('contacts.index', compact('contacts', 'companies', 'no_company_count'))->with(['context' => $this->context]);
+        return view('contacts.index', compact('contacts'))->with(['context' => $this->context]);
     }
 }

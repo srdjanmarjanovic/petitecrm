@@ -18,6 +18,9 @@ class ComposerServiceProvider extends ServiceProvider
             ['companies.index', 'contacts.index'],
             'App\Http\ViewComposers\TagSidebarFilter'
         );
+        
+        view()->composer('contacts.index', 'App\Http\ViewComposers\CompanySidebarFilter');
+
 
         // Using Closure based composers...
         // view()->composer('dashboard', function ($view) {

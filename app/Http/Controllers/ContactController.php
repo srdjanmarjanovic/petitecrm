@@ -30,18 +30,7 @@ class ContactController extends Controller
     {
         $contacts = Contact::orderBy('updated_at', 'desc')->paginate(10);
 
-        $companies = Company::has('contacts')->get()->sortByDesc(function($company) {
-            return count($company->contacts);
-        });
-
-        $tags = Tag::has('contacts')->get()->sortByDesc(function($tag) {
-            return count($tag->contacts);
-        });
-
-        $no_tag_count = Contact::has('tags', '=', 0)->count();
-        $no_company_count = Contact::has('company', '=', 0)->count();
-
-        return view('contacts.index', compact('contacts', 'companies', 'tags', 'no_tag_count', 'no_company_count'))->with(['context' => $this->context]);
+        return view('contacts.index', compact('contacts'))->with(['context' => $this->context]);
     }
 
     /**
