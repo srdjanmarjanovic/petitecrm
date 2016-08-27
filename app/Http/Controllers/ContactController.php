@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Company;
@@ -17,6 +16,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ContactController extends Controller
 {
     /**
+     * @var string
+     */
+    protected $context = 'contacts';
+
+    /**
      * Display a listing of the resource.
      *
      * @param Request $request
@@ -24,7 +28,6 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
-        $context = 'contacts';
         $contacts = Contact::orderBy('updated_at', 'desc')->paginate(10);
 
         $companies = Company::has('contacts')->get()->sortByDesc(function($company) {
@@ -38,7 +41,7 @@ class ContactController extends Controller
         $no_tag_count = Contact::has('tags', '=', 0)->count();
         $no_company_count = Contact::has('company', '=', 0)->count();
 
-        return view('contacts.index', compact('contacts', 'companies', 'tags', 'no_tag_count', 'no_company_count', 'context'));
+        return view('contacts.index', compact('contacts', 'companies', 'tags', 'no_tag_count', 'no_company_count'))->with(['context' => $this->context]);
     }
 
     /**

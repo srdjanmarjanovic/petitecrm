@@ -11,6 +11,11 @@ use App\Http\Requests;
 class CompanyController extends Controller
 {
     /**
+     * @var string
+     */
+    protected $context = 'companies';
+
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

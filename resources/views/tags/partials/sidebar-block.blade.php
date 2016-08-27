@@ -8,16 +8,16 @@
     <div class="box-body no-padding">
         <ul class="nav nav-pills nav-stacked">
             @foreach($tags as $tag)
-                @if(Request::is('contacts/tag/' . $tag->id))
-                    <li class="active"><a href="{{ route('contacts.all') }}">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->{$context}) }}</span></a></li>
+                @if(Request::is("{$context}/tag/{$tag->id}"))
+                    <li class="active"><a href="{{ route("{$context}.all") }}">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->{$context}) }}</span></a></li>
                 @else
-                    <li><a href="{{ route('tag_contacts', $tag->id) }}">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->{$context}) }}</span></a></li>
+                    <li><a href="{{ route("tag_{$context}", $tag->id) }}">{{ $tag->name }} <span class="label label-primary pull-right">{{ count($tag->{$context}) }}</span></a></li>
                 @endif
             @endforeach
-            @if(Request::is('contacts/tag/none'))
-                <li class="active"><a href="{{ route('contacts.all') }}"><em>Without tags</em> <span class="label label-primary pull-right">{{ $no_tag_count }}</span></a></li>
+            @if(Request::is("{$context}/tag/none"))
+                <li class="active"><a href="{{ route("{$context}.all") }}"><em>Without tags</em> <span class="label label-primary pull-right">{{ $no_tag_count }}</span></a></li>
             @else
-                <li><a href="{{ route('no_tag_contacts') }}"><em>Without tags</em> <span class="label label-primary pull-right">{{ $no_tag_count }}</span></a></li>
+                <li><a href="{{ route("no_tag_{$context}") }}"><em>Without tags</em> <span class="label label-primary pull-right">{{ $no_tag_count }}</span></a></li>
             @endif
         </ul>
     </div>

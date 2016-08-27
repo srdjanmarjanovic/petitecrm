@@ -2,26 +2,30 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
+| Common application routes.
+|--------------------------------------------------------------------------    
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::auth();
-
 Route::get('/home', 'HomeController@index');
 
+/*
+|--------------------------------------------------------------------------
+| Contacts related routes.
+|--------------------------------------------------------------------------    
+*/
 Route::group(['prefix' => 'contacts'], function () {
+    // import
     Route::get('import', ['as' => 'contacts.import.form', 'uses' => 'ContactController@showImportForm']);
     Route::post('import', ['as' => 'contacts.import.do_import', 'uses' => 'ContactController@doImport']);
+
+    // filters
+    Route::get('company/none', ['as' => 'no_company_contacts', 'uses' => 'ContactsFilterController@filterWithoutCompany']);
+    Route::get('company/{id}', ['as' => 'company_contacts', 'uses' => 'ContactsFilterController@filterByCompany']);
+    Route::get('tag/none', ['as' => 'no_tag_contacts', 'uses' => 'ContactsFilterController@filterWithoutTags']);
+    Route::get('tag/{id}', ['as' => 'tag_contacts', 'uses' => 'ContactsFilterController@filterByTag']);
 });
 
 Route::resource('contacts', 'ContactController', [
@@ -37,6 +41,19 @@ Route::resource('contacts', 'ContactController', [
     'middleware' => 'auth'
 ]);
 
+/*
+|--------------------------------------------------------------------------
+| Companies related routes.
+|--------------------------------------------------------------------------    
+*/
+Route::group(['prefix' => 'companies'], function () {
+    // filters
+    Route::get('tag/none', ['as' => 'no_tag_companies', 'uses' => 'CompaniesFilterController@filterWithoutTags']);
+    Route::get('tag/{id}', ['as' => 'tag_companies', 'uses' => 'CompaniesFilterController@filterByTag']);
+
+    // @TODO implement industries filter
+});
+
 Route::resource('companies', 'CompanyController', [
     'names' => [
         'create' => 'company.create',
@@ -50,13 +67,11 @@ Route::resource('companies', 'CompanyController', [
     'middleware' => 'auth'
 ]);
 
-Route::group(['prefix' => 'contacts', 'middleware' => 'auth'], function () {
-    Route::get('company/none', ['as' => 'no_company_contacts', 'uses' => 'ContactsFilterController@filterWithoutCompany']);
-    Route::get('company/{id}', ['as' => 'company_contacts', 'uses' => 'ContactsFilterController@filterByCompany']);
-    Route::get('tag/none', ['as' => 'no_tag_contacts', 'uses' => 'ContactsFilterController@filterWithoutTags']);
-    Route::get('tag/{id}', ['as' => 'tag_contacts', 'uses' => 'ContactsFilterController@filterByTag']);
-});
-
+/*
+|--------------------------------------------------------------------------
+| Lists related routes.
+|--------------------------------------------------------------------------    
+*/
 Route::resource('lists', 'ListController', [
     'names' => [
         'create' => 'list.create',
@@ -69,6 +84,11 @@ Route::resource('lists', 'ListController', [
     'middleware' => 'auth'
 ]);
 
+/*
+|--------------------------------------------------------------------------
+| Tags related routes.
+|--------------------------------------------------------------------------    
+*/
 Route::resource('tags', 'TagController', [
     'names' => [
         'create' => 'tag.create',

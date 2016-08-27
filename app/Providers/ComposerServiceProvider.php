@@ -15,7 +15,8 @@ class ComposerServiceProvider extends ServiceProvider
     {
         // Using class based composers...
         view()->composer(
-            'profile', 'App\Http\ViewComposers\ProfileComposer'
+            ['companies.index', 'contacts.index'],
+            'App\Http\ViewComposers\TagSidebarFilter'
         );
 
         // Using Closure based composers...
