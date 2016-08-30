@@ -22,7 +22,7 @@ h1.page-title {
 .dropdown-menu > li > a:hover {
   background-color: transparent;
   color: #080808;
-  cursor: crosshair;
+  cursor: pointer;
 }
 .btn-options .active {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
