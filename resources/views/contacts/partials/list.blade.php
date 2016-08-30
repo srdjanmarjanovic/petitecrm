@@ -1,15 +1,6 @@
 <div class="col-md-9">
     <div class="box box-solid">
         <div class="box-header">
-          {{--<form action="#" method="get">--}}
-              {{--<div class="input-group">--}}
-                  {{--<input class="form-control" placeholder="{{ trans('adminlte_lang::message.search') }}" type="text" name="q" id="q">--}}
-                  {{--<span class="input-group-btn">--}}
-                    {{--<button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>--}}
-                  {{--</span>--}}
-              {{--</div>--}}
-          {{--</form>--}}
-
             @if($contacts->count())
                 <div class="mailbox-controls">
                     <!-- Check all button -->

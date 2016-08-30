@@ -236,7 +236,6 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
-
     ],
 
 ];

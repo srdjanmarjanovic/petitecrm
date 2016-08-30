@@ -71,7 +71,7 @@ Add new Contact
             <div class="form-group">
                 <label for="company" class="col-sm-2 control-label text-muted">Company</label>
                 <div class="col-sm-4">
-                    {{  Form::select('company_id', $companies->lists('name', 'id'), null, ['id' =>'company_id', 'placeholder' => '- none -', 'tabindex' => 6, 'class' => 'form-control select2 select2-hidden-accessible']) }}
+                    {{  Form::select('company_id', $companies->lists('name', 'id'), Request::get('company_id'), ['id' =>'company_id', 'placeholder' => '- none -', 'tabindex' => 6, 'class' => 'form-control select2 select2-hidden-accessible']) }}
                 </div>
 
                 <label for="company" class="col-sm-1 control-label text-muted">Role</label>

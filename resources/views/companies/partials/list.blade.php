@@ -1,15 +1,6 @@
 <div class="col-md-9">
     <div class="box box-solid">
         <div class="box-header">
-          {{--<form action="#" method="get">--}}
-              {{--<div class="input-group">--}}
-                  {{--<input class="form-control" placeholder="{{ trans('adminlte_lang::message.search') }}" type="text" name="q" id="q">--}}
-                  {{--<span class="input-group-btn">--}}
-                    {{--<button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>--}}
-                  {{--</span>--}}
-              {{--</div>--}}
-          {{--</form>--}}
-
             @if($companies->count())
                 <div class="mailbox-controls">
                     <!-- Check all button -->
@@ -57,7 +48,7 @@
                                 <i class="fa fa-ellipsis-h text-muted"></i>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                <li><a href="#" class="text-primary"><i class="fa fa-user-plus" aria-hidden="true"></i>Add contact</a></li>
+                                <li><a href="{{ route('contact.create', ['company_id' => $company->id]) }}" class="text-primary"><i class="fa fa-user-plus" aria-hidden="true"></i>Add contact</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ route('company.edit', $company->id) }}"><i class="fa fa-pencil"></i> Edit</a></li>
                                 <li><a href="#" data-toggle="modal" data-target="#delete-confirm" data-action="{{ route('company.delete', $company->id) }}"><i class="fa fa-trash-o"></i> Delete</a></li>
