@@ -5,7 +5,7 @@
 
 @section('section-one')
     <ul class="contacts-top-menu list-inline text-right margin-tb-10">
-        <li><a href="#">Manage Industries</a></li>
+        <li><a href="{{ route('industries.all') }}">Manage Industries</a></li>
     </ul>
 @endsection
 

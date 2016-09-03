@@ -50,7 +50,6 @@ Route::group(['prefix' => 'companies'], function () {
     // filters
     Route::get('tag/none', ['as' => 'no_tag_companies', 'uses' => 'CompaniesFilterController@filterWithoutTags']);
     Route::get('tag/{id}', ['as' => 'tag_companies', 'uses' => 'CompaniesFilterController@filterByTag']);
-
     // @TODO implement industries filter
 });
 
@@ -65,6 +64,18 @@ Route::resource('companies', 'CompanyController', [
         'destroy' => 'company.delete',
     ],
     'middleware' => 'auth'
+]);
+
+Route::resource('industries', 'IndustryController', [
+    'names' => [
+        'create' => 'industry.create',
+        'show' => 'industry.single',
+        'index' => 'industries.all',
+        'update' => 'industry.update',
+        'edit' => 'industry.edit',
+        'store' => 'industry.save',
+        'destroy' => 'industry.delete',
+    ],
 ]);
 
 /*
