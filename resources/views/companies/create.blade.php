@@ -10,7 +10,7 @@ Add new Company
 
 @section('main-content')
     <div class="col-xs-8 col-xs-offset-2">
-        {{ Form::open(['class' => 'form-horizontal', 'route' => ['contact.save'], 'method' => 'post']) }}
+        {{ Form::open(['class' => 'form-horizontal', 'route' => ['company.save'], 'method' => 'post']) }}
             {!! csrf_field(); !!}
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                 <label for="name" class="col-sm-2 control-label text-muted">Name</label>

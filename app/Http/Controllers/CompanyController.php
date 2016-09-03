@@ -7,6 +7,7 @@ use App\Tag;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\ManageCompanyRequest;
 
 class CompanyController extends Controller
 {
@@ -43,12 +44,12 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\ManageCompanyController  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ManageCompanyRequest $request)
     {
-        //
+            dd($request);
     }
 
     /**
