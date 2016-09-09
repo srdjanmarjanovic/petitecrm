@@ -25,7 +25,6 @@ class CompanyController extends Controller
     {
         $companies = Company::orderBy('updated_at', 'desc')->paginate(10);
         
-        // @TODO implement industries filter
         return view('companies.index', compact('companies'))->with(['context' => $this->context]);
     }
 
@@ -49,7 +48,13 @@ class CompanyController extends Controller
      */
     public function store(ManageCompanyRequest $request)
     {
-            dd($request);
+        $company = Company::create($request->except('_token', '_method'));
+
+        if ($company && $company instanceof Company) {
+            return redirect(route('companies.all'))->with('status', ['type' => 'success', 'message' => 'Company added successfully!']);
+        }
+
+        return redirect()->back()->withErrors(['error' => '? Bummer! Something went wrong :(']);
     }
 
     /**

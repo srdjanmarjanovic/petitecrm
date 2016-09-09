@@ -17,7 +17,7 @@ Add new Contact
                 <label for="first_name" class="col-sm-2 control-label text-muted">Type</label>
                 <div class="col-sm-10">
                     <div class="btn-group btn-options" data-toggle="buttons">
-                        <label class="btn btn-default btn-flat {{ (old('type') === 'lead') ? 'active' : '' }}">
+                        <label class="btn btn-default btn-flat {{ (old('type') === 'lead' || empty (old('type'))) ? 'active' : '' }}">
                             {{ Form::radio('type', 'lead', (old('type') === 'lead'), ['autocomplete' => 'off']) }} Lead
                         </label>
                         <label class="btn btn-default btn-flat {{ (old('type') === 'prospect') ? 'active' : ''}}">
@@ -36,57 +36,76 @@ Add new Contact
                     <div class="row">
                         <div class="col-xs-4">
                             {{ Form::text('first_name', null, ['class' => 'form-control ', 'id' => 'first_name', 'placeholder' => 'Marco', 'tabindex' => 2]) }}
-
                         </div>
                         <div class="col-xs-8">
                             {{ Form::text('last_name', null, ['class' => 'form-control', 'id' => 'last_name', 'placeholder' => 'Polo', 'tabindex' => 3]) }}
                         </div>
-                        <div class="col-xs-12">
-                            @if($errors->has('first_name'))
-                                <span class="help-block">{{ $errors->first('first_name') }}</span>
-                            @endif
-                            @if($errors->has('last_name'))
-                                <span class="help-block">{{ $errors->first('last_name') }}</span>
-                            @endif
-                        </div>
+                        @if($errors->has('first_name') || $errors->has('last_name'))
+                            <div class="col-xs-12">
+                                @if($errors->has('first_name'))
+                                    <span class="help-block">{{ $errors->first('first_name') }}</span>
+                                @endif
+                                @if($errors->has('last_name'))
+                                    <span class="help-block">{{ $errors->first('last_name') }}</span>
+                                @endif
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="email" class="col-sm-2 control-label text-muted">Email</label>
-                <div class="col-sm-10">
+            <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                <label for="email" class="col-xs-2 control-label text-muted">Email</label>
+                <div class="col-xs-10">
                     {{ Form::email('email', null, ['class' => 'form-control', 'id' => 'email', 'tabindex' => 4]) }}
+                    @if($errors->has('email'))
+                        <div class="row">
+                            <div class="col-xs-12">
+                                    <span class="help-block">{{ $errors->first('email') }}</span>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
                 <label for="phone" class="col-sm-2 control-label text-muted">Phone</label>
-
                 <div class="col-sm-10">
                     {{ Form::text('phone', null, ['class' => 'form-control', 'id' => 'phone', 'placeholder' => '+381 64 123 456 789', 'tabindex' => 5]) }}
+                    @if($errors->has('phone'))
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <span class="help-block">{{ $errors->first('phone') }}</span>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
 
+            <div class="form-group  {{ $errors->has('role') ? 'has-error' : '' }}">
+                <label for="role" class="col-sm-2 control-label text-muted">Role</label>
+                <div class="col-sm-10">
+                    {{ Form::text('role', null, ['class' => 'form-control', 'id' => 'role', 'placeholder' => 'Store manager', 'tabindex' => 6]) }}
+                    @if($errors->has('role')) 
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <span class="help-block">{{ $errors->first('role') }}</span>
+                            </div>
+                        </div>
+                   @endif
+                </div>
+            </div>
+            
             <div class="form-group">
                 <label for="company" class="col-sm-2 control-label text-muted">Company</label>
                 <div class="col-sm-4">
-                    {{  Form::select('company_id', $companies->lists('name', 'id'), Request::get('company_id'), ['id' =>'company_id', 'placeholder' => '- none -', 'tabindex' => 6, 'class' => 'form-control select2 select2-hidden-accessible']) }}
-                </div>
-
-                <label for="company" class="col-sm-1 control-label text-muted">Role</label>
+                    {{  Form::select('company_id', $companies->lists('name', 'id'), Request::get('company_id'), ['id' =>'company_id', 'placeholder' => '- none -', 'tabindex' => 7, 'class' => 'form-control select2 select2-hidden-accessible']) }}
+                </div> 
+                 <label for="tags" class="col-sm-1 control-label text-muted">Tags</label>
                 <div class="col-sm-5">
-                    {{ Form::text('role', null, ['class' => 'form-control', 'id' => 'role', 'placeholder' => 'Store manager', 'tabindex' => 7]) }}
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="inputSkills" class="col-sm-2 control-label text-muted">Tags</label>
-                <div class="col-sm-10">
                     {{  Form::select('tags', $tags->lists('name', 'id'), null, ['multiple' => 'multiple', 'id' =>'tags', 'name' => 'tags[]' ,'tabindex' => 8, 'class' => 'form-control select2 select2-hidden-accessible']) }}
-                </div>
+                </div>               
             </div>
-
 
             <div class="form-group">
                 <label for="notes" class="col-sm-2 control-label text-muted">Notes</label>

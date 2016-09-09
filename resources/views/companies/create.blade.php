@@ -17,7 +17,7 @@ Add new Company
                 <div class="col-sm-10">
                     <div class="row">
                         <div class="col-xs-12">
-                            {{ Form::text('name', null, ['class' => 'form-control ', 'id' => 'name', 'placeholder' => 'SuperCool inc.', 'tabindex' => 2]) }}
+                            {{ Form::text('name', null, ['class' => 'form-control ', 'id' => 'name', 'placeholder' => 'SuperCool inc.', 'tabindex' => 1]) }}
                         </div>
                         <div class="col-xs-12">
                             @if($errors->has('name'))
@@ -31,7 +31,14 @@ Add new Company
             <div class="form-group">
                 <label for="email" class="col-sm-2 control-label text-muted">Email</label>
                 <div class="col-sm-10">
-                    {{ Form::email('email', null, ['class' => 'form-control', 'id' => 'email', 'tabindex' => 4]) }}
+                    {{ Form::email('email', null, ['class' => 'form-control', 'id' => 'email', 'placeholder' => 'ceo@supercoolinc.com', 'tabindex' => 2]) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="website" class="col-sm-2 control-label text-muted">Web site</label>
+                <div class="col-sm-10">
+                    {{ Form::text('website', null, ['class' => 'form-control', 'id' => 'website', 'placeholder' => 'www.supercoolinc.com', 'tabindex' => 3])}}
                 </div>
             </div>
 
@@ -39,22 +46,35 @@ Add new Company
                 <label for="phone" class="col-sm-2 control-label text-muted">Phone</label>
 
                 <div class="col-sm-10">
-                    {{ Form::text('phone', null, ['class' => 'form-control', 'id' => 'phone', 'placeholder' => '+381 64 123 456 789', 'tabindex' => 5]) }}
+                    {{ Form::text('phone', null, ['class' => 'form-control', 'id' => 'phone', 'placeholder' => '+381 64 123 456 789', 'tabindex' => 4]) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address" class="col-sm-2 control-label text-muted">Address</label>
+                <div class="col-sm-10">
+                    {{ Form::text('address', null, ['class' => 'form-control', 'id' => 'address', 'placeholder' => '43, Sunset boulevard', 'tabindex' => 5]) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="city" class="col-sm-2 control-label text-muted">City</label>
+                <div class="col-sm-10">
+                    {{ Form::text('city', null, ['class' => 'form-control', 'id' => 'city', 'placeholder' => 'Los Angeles, CA', 'tabindex' => 5]) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="country" class="col-sm-2 control-label text-muted">Country</label>
+                <div class="col-sm-10">
+                    {{ Form::text('country', null, ['class' => 'form-control', 'id' => 'country', 'placeholder' => 'USA', 'tabindex' => 5]) }}
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="inputSkills" class="col-sm-2 control-label text-muted">Tags</label>
                 <div class="col-sm-10">
-                    {{  Form::select('tags', $tags->lists('name', 'id'), null, ['multiple' => 'multiple', 'id' =>'tags', 'name' => 'tags[]' ,'tabindex' => 8, 'class' => 'form-control select2 select2-hidden-accessible']) }}
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="notes" class="col-sm-2 control-label text-muted">Notes</label>
-
-                <div class="col-sm-10">
-                    {{ Form::textarea('notes', null, ['class' => 'form-control', 'id' => 'notes', 'placeholder' => 'Notes about this contact...', 'tabindex' => 9]) }}
+                    {{  Form::select('tags', $tags->lists('name', 'id'), null, ['multiple' => 'multiple', 'id' =>'tags', 'name' => 'tags[]' ,'tabindex' => 5, 'class' => 'form-control select2 select2-hidden-accessible']) }}
                 </div>
             </div>
 
@@ -63,7 +83,7 @@ Add new Company
                     <button tabindex="8" type="button" onclick="window.history.back();" class="btn btn-default btn-block btn-flat btn-sm">Cancel</button>
                 </div>
                 <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
-                    <button tabindex="8" type="submit" class="btn btn-block btn-flat btn-primary btn-sm"><i class="fa fa-check"></i> Done</button>
+                    <button tabindex="7" type="submit" class="btn btn-block btn-flat btn-primary btn-sm"><i class="fa fa-check"></i> Done</button>
                 </div>
             </div>
 

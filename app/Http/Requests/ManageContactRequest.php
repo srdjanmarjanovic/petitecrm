@@ -29,7 +29,6 @@ class ManageContactRequest extends Request
             'last_name' => 'string|between:3,250',
             'email' => 'required|email',
             'phone' => 'string|between:3,250',
-            'company_id' => 'exists:companies,id',
             'role' => 'string|between:3,250',
         ];
     }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Managers\TagManager;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
@@ -15,6 +16,39 @@ class Company extends Model
         'created_at',
         'updated_at'
     ];
+    
+    /**
+     * Mass assignment allowed fields.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'website',
+        'phone',
+        'address',
+        'city',
+        'country'
+    ];
+    
+    /**
+     * Create contact instance.
+     *
+     * @param array $attributes
+     * @return void|Contact
+     */
+    public static function create(array $attributes = [])
+    {
+        /** @var Contact $instance */
+        $instance =  parent::create($attributes);
+
+        if (isset($attributes['tags'])) {
+            $instance->setTags($attributes['tags']);
+        }
+        
+        return $instance;
+    }
 
     /**
      * Get all contacts for the company.
@@ -56,5 +90,17 @@ class Company extends Model
         }
 
         return implode(', ', $bits);
+    }
+
+    /**
+     * Set tags for new or existing contact.
+     *
+     * @param array $tags
+     */
+    private function setTags($tags)
+    {
+        $tag_manager = new TagManager();
+
+        $this->tags()->sync($tag_manager->getTagIdsFromRequest($tags));
     }
 }

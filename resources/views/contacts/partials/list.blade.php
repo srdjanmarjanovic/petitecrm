@@ -31,8 +31,8 @@
                     {{--<td><div aria-disabled="false" aria-checked="false" style="position: relative;" class="icheckbox_flat-blue"><input style="position: absolute; opacity: 0;" type="checkbox"><ins style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins></div></td>--}}
                     {{--<td class="mailbox-star" title="{{ $contact->type }}"><i class="fa {{ $contact->getTypeClass() }} text-yellow"></i></td>--}}
                     <td class="mailbox-name">
-                        <i class="fa {{ $contact->getTypeClass() }} text-yellow" title="{{ ucfirst($contact->type) }}"></i>
-                        <a href="{{ route('contact.single', ['id' => $contact->id]) }}">
+                        <small><i class="fa {{ $contact->getTypeClass() }}" title="{{ ucfirst($contact->type) }}"></i></small>
+                        <a href="{{ route('contact.single', ['id' => $contact->id])}}">
                             {{ $contact->getDisplayName() }}
                         </a>
                         @if($contact->getRoleInCompany())

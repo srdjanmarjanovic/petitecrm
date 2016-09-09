@@ -158,11 +158,11 @@ class Contact extends Model
         switch ($this->type) {
             case 'lead':
             default:
-                return 'fa-star-o';
+                return 'fa-circle-o text-yellow';
             case 'prospect':
-                return 'fa-star-half-o';
+                return 'fa-circle-o text-green';
             case 'customer':
-                return 'fa-star';
+                return 'fa-circle text-green';
         }
     }
 
