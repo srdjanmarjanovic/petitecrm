@@ -24,16 +24,14 @@
         @include('tags.partials.sidebar-block')
     </div>
 
-{{--    @include('contacts.partials.delete.form', ['backpath' => Request::fullUrl()])--}}
-{{--    @include('contacts.partials.delete.confirm')--}}
+    @include('partials.delete.form', ['backpath' => Request::fullUrl()])
+    @include('partials.delete.confirm')
 @endsection
 
 @section('scripts')
     @parent
     <script type="text/javascript">
         $('.dropdown-toggle').dropdown();
-{{--        @include('contacts.partials.delete.js')--}}
+        @include('partials.delete.js')
     </script>
-
-
 @endsection

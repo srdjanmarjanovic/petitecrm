@@ -37,5 +37,8 @@ h1.page-title {
 .sidebar-block li.active {
   background: lightyellow;
 }
+.type-control:hover {
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=app.css.map */

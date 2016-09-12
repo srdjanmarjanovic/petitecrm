@@ -158,7 +158,7 @@ class Contact extends Model
         switch ($this->type) {
             case 'lead':
             default:
-                return 'fa-circle-o text-yellow';
+                return 'fa-circle-o text-muted';
             case 'prospect':
                 return 'fa-circle-o text-green';
             case 'customer':

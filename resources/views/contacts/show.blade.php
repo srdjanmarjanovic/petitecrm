@@ -12,14 +12,14 @@
 
 @section('main-content')
     @include('contacts.partials.profile')
-    @include('contacts.partials.delete.form', ['backpath' => URL::previous()])
-    @include('contacts.partials.delete.confirm')
+    @include('partials.delete.form', ['backpath' => URL::previous()])
+    @include('partials.delete.confirm')
 @endsection
 
 @section('scripts')
     @parent
     <script type="text/javascript">
         $('.dropdown-toggle').dropdown();
-        @include('contacts.partials.delete.js')
+        @include('partials.delete.js')
     </script>
 @endsection

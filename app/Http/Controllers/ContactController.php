@@ -70,7 +70,7 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        return view('contacts.show', ['contact' => Contact::findOrFail($id)]);
+        return view('contacts.show', ['contact' => Contact::findOrFail($id)])->with(['context' => $this->context]);
     }
 
     /**
