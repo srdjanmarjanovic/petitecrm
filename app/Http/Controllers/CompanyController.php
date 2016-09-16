@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
 use App\Http\Requests\ManageCompanyRequest;
@@ -65,7 +66,9 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = Company::findOrFail($id);
+
+        return view('companies.show', compact('company'))->with(['context' => $this->context]);
     }
 
     /**
@@ -99,6 +102,19 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        /** @var Company $company */
+        $company = Company::findOrFail($id);
+        $back = !empty(Input::get('backpath')) ? Input::get('backpath') : route('companies.all');
+
+        try {
+            $result = $company->delete();
+            if (!$result) {
+                throw new LogicException();
+            }
+        } catch(Exception $e) {
+            return redirect($back)->withErrors('? Bummer! Something went wrong :(');
+        }
+
+        return redirect($back)->with('status', ['type' => 'success', 'message' => 'Company deleted successfully!']);        
     }
 }

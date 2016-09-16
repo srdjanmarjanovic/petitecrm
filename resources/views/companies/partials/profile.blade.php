@@ -4,7 +4,7 @@
   <div class="box box-solid">
     <div class="box-body box-profile">
       <p class="text-muted">
-          <i class="fa fa-calendar margin-r-5 text-muted" aria-hidden="true"></i> <small title="{{ $contact->created_at }}">Added {{ $contact->created_at->diffForHumans() }}</small>
+          <i class="fa fa-calendar margin-r-5 text-muted" aria-hidden="true"></i> <small title="{{ $company->created_at }}">Added {{ $company->created_at->diffForHumans() }}</small>
       </p>
 
       <img class="profile-user-img img-responsive img-circle" src="{{asset('/img/user2-160x160.jpg')}}" alt="User profile picture">
@@ -12,7 +12,7 @@
       {{--<h3 class="profile-username text-center"></h3>--}}
 
       <p class="text-muted text-center">
-        <small>@if(!empty($contact->role)) {{ $contact->role }} in @endif @if($contact->company) {{ $contact->company->name }} @endif</small>
+        {{-- <small>@if(!empty($contact->role)) {{ $contact->role }} in @endif @if($contact->company) {{ $contact->company->name }} @endif</small> --}}
       </p>
 
         <ul class="list-group list-group-unbordered">
@@ -52,21 +52,22 @@
     <div class="box-body">
       <ul class="list-group list-group-unbordered">
         <li class="list-group-item">
-          <i class="fa fa-envelope margin-r-5 text-muted" aria-hidden="true"></i><span>{{ $contact->email }}</span>
+          <i class="fa fa-envelope margin-r-5 text-muted" aria-hidden="true"></i><span>{{ $company->email }}</span>
         </li>
-        @if(!empty($contact->phone))
+        @if(!empty($company->phone))
             <li class="list-group-item">
-                <i class="fa fa-phone margin-r-5 text-muted" aria-hidden="true"></i><span>{{ $contact->phone }}</span>
+                <i class="fa fa-phone margin-r-5 text-muted" aria-hidden="true"></i><span>{{ $company->phone }}</span>
             </li>
         @endif
-        @if(count($contact->tags))
+         @if(count($company->tags))
             <li class="list-group-item">
                 <i class="fa fa-tags margin-r-5 text-muted"></i>
-                @foreach($contact->tags as $tag)
+                @foreach($company->tags as $tag)
                     <span class="label label-primary">{{ $tag->name }}</span>
                 @endforeach
             </li>
         @endif
+
         @if(!empty($contact->notes))
             <li class="list-group-item">
                 <i class="fa fa-file-text-o margin-r-5 text-muted"></i>{{ $contact->notes }}

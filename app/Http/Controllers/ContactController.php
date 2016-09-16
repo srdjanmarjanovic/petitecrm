@@ -121,7 +121,7 @@ class ContactController extends Controller
     {
         /** @var Contact $contact */
         $contact = Contact::findOrFail($id);
-        $back = Input::get('backpath') ? Input::get('backpath') : back();
+        $back = !empty(Input::get('backpath')) ? Input::get('backpath') : route('contacts.all');
 
         try {
             $result = $contact->delete();
