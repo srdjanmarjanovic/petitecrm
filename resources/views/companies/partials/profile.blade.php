@@ -7,7 +7,7 @@
           <i class="fa fa-calendar margin-r-5 text-muted" aria-hidden="true"></i> <small title="{{ $company->created_at }}">Added {{ $company->created_at->diffForHumans() }}</small>
       </p>
 
-      <img class="profile-user-img img-responsive img-circle" src="{{asset('/img/user2-160x160.jpg')}}" alt="User profile picture">
+      <img class="profile-user-img img-responsive img-circle" src="{{asset('/img/user2-160x160.jpg')}}" alt="Company logo">
 
       {{--<h3 class="profile-username text-center"></h3>--}}
 
@@ -17,27 +17,17 @@
 
         <ul class="list-group list-group-unbordered">
             <li class="list-group-item">
-              Messages <b><a class="pull-right">1,322</a></b>
+              Contacts
+              @if($company->contacts->count())
+                 <a href="{{ route('company_contacts', ['id' => $company->id]) }}" class="pull-right">{{ $company->contacts->count() }}</a>
+              @else
+                <span class="pull-right text-muted">none</span>
+              @endif
             </li>
             <li class="list-group-item">
-              Engagement <b><a class="pull-right text-warning">45%</a></b>
-            </li>
-            <li class="list-group-item">
-              Rapportivenes <b><a class="pull-right text-success">80%</a></b>
+              Overall interactions <b><a class="pull-right text-info">2,727</a></b>
             </li>
         </ul>
-        <div class="row margin-bottom">
-            <div class="col-xs-12  btn-group btn-group-justified">
-                <a href="#" class="btn btn-flat btn-default"><i class="fa fa-phone" aria-hidden="true"></i> Call</a>
-                <a href="#" class="btn btn-flat btn-default"><i class="fa fa-paper-plane"></i> Send SMS</a>
-            </div>
-        </div>
-        {{-- @TODO point this link to new message form --}}
-        <div class="row">
-            <div class="col-xs-12">
-                <a href="#" class="btn btn-flat btn-primary btn-block"><i class="fa fa-envelope-o"></i> Send e-mail</a>
-            </div>
-        </div>
     </div>
     <!-- /.box-body -->
   </div>
@@ -51,9 +41,11 @@
     <!-- /.box-header -->
     <div class="box-body">
       <ul class="list-group list-group-unbordered">
-        <li class="list-group-item">
-          <i class="fa fa-envelope margin-r-5 text-muted" aria-hidden="true"></i><span>{{ $company->email }}</span>
-        </li>
+        @if(!empty($company->email))
+          <li class="list-group-item">
+            <i class="fa fa-envelope margin-r-5 text-muted" aria-hidden="true"></i><a href="mailto:{{ $company->email }}">{{ $company->email }}</a>
+          </li>
+        @endif
         @if(!empty($company->phone))
             <li class="list-group-item">
                 <i class="fa fa-phone margin-r-5 text-muted" aria-hidden="true"></i><span>{{ $company->phone }}</span>

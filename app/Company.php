@@ -99,8 +99,6 @@ class Company extends Model
      */
     private function setTags($tags)
     {
-        $tag_manager = new TagManager();
-
-        $this->tags()->sync($tag_manager->getTagIdsFromRequest($tags));
+        $this->tags()->sync(app('TagManager')->getTagIdsFromRequest($tags));
     }
 }

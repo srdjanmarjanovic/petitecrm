@@ -3,6 +3,7 @@
 @section('contentheader_title')
 {{ $company->name }}
 @endsection
+
 @section('section-one')
 	<ul class="companies-top-menu list-inline text-right margin-tb-10">
 	    <li><a href="{{ route('company.edit', $company->id) }}"><i class="fa fa-pencil"></i> Edit</a></li>

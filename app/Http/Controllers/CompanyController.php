@@ -36,9 +36,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        // @TODO implement industries
-        $tags = Tag::all();
-        return view('companies.create', compact('tags'));
+        return view('companies.create');
     }
 
     /**
@@ -79,7 +77,9 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = Company::findOrFail($id);
+
+        return view('companies.edit', compact('company'))->with(['context' => $this->context]);
     }
 
     /**

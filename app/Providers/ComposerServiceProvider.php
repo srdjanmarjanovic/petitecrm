@@ -13,19 +13,13 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Using class based composers...
-        view()->composer(
-            ['companies.index', 'contacts.index'],
-            'App\Http\ViewComposers\TagSidebarFilter'
-        );
+        view()->composer(['companies.index', 'contacts.index'], 'App\Http\ViewComposers\TagSidebarFilter');
         
+        view()->composer(['companies.create', 'companies.edit', 'contacts.edit', 'contacts.create'], 'App\Http\ViewComposers\AllTags');
+
+        view()->composer(['contacts.edit', 'contacts.create'], 'App\Http\ViewComposers\AllCompanies');
+
         view()->composer('contacts.index', 'App\Http\ViewComposers\CompanySidebarFilter');
-
-
-        // Using Closure based composers...
-        // view()->composer('dashboard', function ($view) {
-        //     //
-        // });
     }
 
     /**

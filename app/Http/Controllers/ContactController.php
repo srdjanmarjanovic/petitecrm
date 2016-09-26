@@ -40,9 +40,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $companies = Company::all();
-        $tags = Tag::all();
-        return view('contacts.create', compact('companies', 'tags'));
+        return view('contacts.create');
     }
 
     /**
@@ -84,13 +82,7 @@ class ContactController extends Controller
         /** @var Contact $contact */
         $contact = Contact::findOrFail($id);
 
-        /** @var Company[] $companies */
-        $companies = Company::all();
-
-        /** @var Tag[] $tags */
-        $tags = Tag::all();
-
-        return view('contacts.edit', compact('contact', 'companies', 'tags'));
+        return view('contacts.edit', compact('contact'));
     }
 
     /**

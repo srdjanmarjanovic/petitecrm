@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Managers\TagManager;
 use Elasticquent\ElasticquentTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -195,8 +194,6 @@ class Contact extends Model
      */
     private function setTags($tags)
     {
-        $tag_manager = new TagManager();
-
-        $this->tags()->sync($tag_manager->getTagIdsFromRequest($tags));
+        $this->tags()->sync(app('TagManager')->getTagIdsFromRequest($tags));
     }
 }

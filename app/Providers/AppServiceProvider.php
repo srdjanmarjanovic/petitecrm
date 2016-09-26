@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Managers\TagManager;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,5 +28,9 @@ class AppServiceProvider extends ServiceProvider
         if($this->app->environment() !== 'production') {
             $this->app->register(IdeHelperServiceProvider::class);
         }
+
+        $this->app->bind('TagManager', function() {
+            return new TagManager;
+        });
     }
 }
