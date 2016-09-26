@@ -38,7 +38,7 @@ h1.page-title {
   background: lightyellow;
 }
 .type-control:hover {
-  cursor: pointer;
+  cursor: default;
 }
 
 /*# sourceMappingURL=app.css.map */
