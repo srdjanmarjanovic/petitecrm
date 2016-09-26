@@ -50,6 +50,17 @@ class Company extends Model
         return $instance;
     }
 
+    public function update(array $attributes = [], array $options = [])
+    {
+         parent::update($attributes, $options);
+
+        if (isset($attributes['tags'])) {
+            $this->setTags($attributes['tags']);
+        }
+
+        return $this;
+    }
+
     /**
      * Get all contacts for the company.
      *

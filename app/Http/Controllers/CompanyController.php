@@ -89,9 +89,15 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ManageCompanyRequest $request, $id)
     {
-        //
+        /** @var Company $company */
+        $company = Company::findOrFail($id);
+        $company->update($request->except(['_method', '_token', '_back']));
+
+        $redirect = Input::get('_back',  route('company.single', $id));
+
+        return redirect($redirect);
     }
 
     /**

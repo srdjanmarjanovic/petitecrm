@@ -9,7 +9,7 @@ Edit {{ $company->name }}
 
 @section('main-content')
     <div class="col-xs-8 col-xs-offset-2">
-        {{ Form::open(['class' => 'form-horizontal', 'route' => ['company.save'], 'method' => 'post']) }}
+        {{ Form::model($company, ['class' => 'form-horizontal', 'route' => ['company.update', $company->id], 'method' => 'put']) }}
             {!! csrf_field(); !!}
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                 <label for="name" class="col-sm-2 control-label text-muted">Name</label>
@@ -73,7 +73,7 @@ Edit {{ $company->name }}
             <div class="form-group">
                 <label for="inputSkills" class="col-sm-2 control-label text-muted">Tags</label>
                 <div class="col-sm-10">
-                    {{  Form::select('tags', $tags->lists('name', 'id'), null, ['multiple' => 'multiple', 'id' =>'tags', 'name' => 'tags[]' ,'tabindex' => 5, 'class' => 'form-control select2 select2-hidden-accessible']) }}
+                    {{  Form::select('tags', $tags->lists('name', 'id'), $company->tags->pluck('id')->all(), ['multiple' => 'multiple', 'id' =>'tags', 'name' => 'tags[]' ,'tabindex' => 5, 'class' => 'form-control select2 select2-hidden-accessible']) }}
                 </div>
             </div>
 
