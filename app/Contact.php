@@ -37,7 +37,11 @@ class Contact extends Model
         if (isset($attributes['tags'])) {
             $instance->setTags($attributes['tags']);
         }
-        
+
+        if (isset($attributes['company_id'])) {
+            $instance->setCompany($attributes['company_id']);
+        }
+
         return $instance;
     }
 
@@ -195,5 +199,16 @@ class Contact extends Model
     private function setTags($tags)
     {
         $this->tags()->sync(app('TagManager')->getTagIdsFromRequest($tags));
+    }
+
+    /**
+     * Set compay for new or existing contact.
+     *
+     * @param array $company
+     */
+    private function setCompany($company_name)
+    {
+        $this->company()->associate(app('CompanyManager')->getCompanyFromRequest($company_name));
+        $this->save();
     }
 }

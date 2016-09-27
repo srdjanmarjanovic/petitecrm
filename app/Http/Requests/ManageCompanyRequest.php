@@ -26,7 +26,6 @@ class ManageCompanyRequest extends Request
     {
         return [
             'name' => 'required',
-            'email' => 'required|email',
         ];
     }
 }

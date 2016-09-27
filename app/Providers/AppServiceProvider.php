@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Managers\TagManager;
+use App\Managers\CompanyManager;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,8 +30,13 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(IdeHelperServiceProvider::class);
         }
 
+
         $this->app->bind('TagManager', function() {
             return new TagManager;
+        });
+
+        $this->app->bind('CompanyManager', function() {
+            return new CompanyManager;
         });
     }
 }
