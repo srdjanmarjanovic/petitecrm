@@ -12,7 +12,7 @@ use App\Http\Requests;
 class CompaniesFilterController extends CompanyController
 {
     /**
-      * Filter companies by tag.
+      * Filter companies without tags.
      */
     public function filterWithoutTags()
     {
@@ -22,7 +22,7 @@ class CompaniesFilterController extends CompanyController
     }
 
     /**
-     * Filter contacts by tag.
+     * Filter companies by tag.
      *
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -33,7 +33,31 @@ class CompaniesFilterController extends CompanyController
                 $query->where('id', '=', $id);
             })->orderBy('updated_at', 'DESC')->paginate(10);
 
-        // @TODO implement no_industry
         return view('companies.index', compact('companies'))->with(['context' => $this->context]);
+    }
+
+   /**
+      * Filter companies without industries.
+     */
+    public function filterWithoutIndustries()
+    {
+        $companies = Company::has('industry', '=', 0)->orderBy('updated_at', 'DESC')->paginate(10);
+        
+        return view('companies.index', compact('companies'))->with(['context' => $this->context]);
+    }
+
+    /**
+     * Filter companies by industry.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function filterByIndustry($id)
+    {
+        $companies = Company::whereHas('industry', function ($query) use ($id) {
+                $query->where('id', '=', $id);
+            })->orderBy('updated_at', 'DESC')->paginate(10);
+
+        return view('companies.index', compact('companies'))->with(['context' => $this->context]); 
     }
 }

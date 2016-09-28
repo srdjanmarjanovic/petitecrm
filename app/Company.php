@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Managers\TagManager;
+use App\Industry;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
@@ -69,6 +70,16 @@ class Company extends Model
     public function contacts()
     {
         return $this->hasMany(Contact::class);
+    }
+
+    /**
+     * Industry relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function industry()
+    {
+        return $this->belongsTo(Industry::class);
     }
 
     /**

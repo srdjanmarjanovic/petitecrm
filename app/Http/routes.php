@@ -50,7 +50,8 @@ Route::group(['prefix' => 'companies'], function () {
     // filters
     Route::get('tag/none', ['as' => 'no_tag_companies', 'uses' => 'CompaniesFilterController@filterWithoutTags']);
     Route::get('tag/{id}', ['as' => 'tag_companies', 'uses' => 'CompaniesFilterController@filterByTag']);
-    // @TODO implement industries filter
+    Route::get('industry/none', ['as' => 'no_industry_companies', 'uses' => 'CompaniesFilterController@filterWithoutIndustries']);
+    Route::get('industry/{id}', ['as' => 'industry_companies', 'uses' => 'CompaniesFilterController@filterByIndustry']);
 });
 
 Route::resource('companies', 'CompanyController', [
