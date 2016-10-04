@@ -120,6 +120,26 @@ class Contact extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
+    
+    /**
+     * Return sent interactions relationship.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function sentInteractions()
+    {
+        return $this->morphMany('App\Interaction', 'sender');
+    }
+
+    /**
+     * Return received interactions relationship.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function receivedInteractions()
+    {
+        return $this->morphMany('App\Interaction', 'receiver');
+    }
 
     /**
      * Return display name.

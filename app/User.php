@@ -23,4 +23,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Return sent interactions relationship.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function sentInteractions()
+    {
+        return $this->morphMany('App\Interaction', 'sender');
+    }
+
+    /**
+     * Return received interactions relationship.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function receivedInteractions()
+    {
+        return $this->morphMany('App\Interaction', 'receiver');
+    }
 }
