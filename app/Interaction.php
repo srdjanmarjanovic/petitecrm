@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
+use App\Contact;
 
 class Interaction extends Model
 {
@@ -15,6 +18,18 @@ class Interaction extends Model
 		'parent_id',
 	];
 
+	public static function boot()
+	{
+	    parent::boot();;
+
+	    static::creating(function (Interaction $Interaction) {
+	    	do {
+	    		$uuid = uniqid();
+	    	} while (Interaction::where('uuid', '=', $uuid)->first());
+
+	    	$interaction->uuid = $uuid;
+	    });
+	}
 	/**
 	 * Return sender relationship.
 	 * 
@@ -53,5 +68,23 @@ class Interaction extends Model
 	public function children()
 	{
 		return $this->hasMany('App\Category');
+	}
+
+	/**
+	 * Find all interactions for the given user and contact.
+	 * 
+	 * @param  Contact $contact
+	 * @return 
+	 */
+	public static function findForContact(Contact $contact) {
+		$interactions = self::where(function($query) use ($contact) {
+									$query->where('sender_type', '=', 'Hello World')
+										   ->where('sender_id', '=', $contact->id);
+								})		
+							    ->orWhere(function($query) use ($contact) {
+									$query->where('receiver_type', '=', Contact::class)
+                      				      ->where('receiver_id', '=', $contact->id);
+								})->get();
+		return $interactions;
 	}
 }

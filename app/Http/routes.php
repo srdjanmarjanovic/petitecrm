@@ -28,6 +28,8 @@ Route::group(['prefix' => 'contacts'], function () {
     Route::get('tag/{id}', ['as' => 'tag_contacts', 'uses' => 'ContactsFilterController@filterByTag']);
 });
 
+Route::get('intereactions/{id}', ['uses' => 'InteractionController@getInteractionsForContact']);
+
 Route::resource('contacts', 'ContactController', [
     'names' => [
         'create' => 'contact.create',

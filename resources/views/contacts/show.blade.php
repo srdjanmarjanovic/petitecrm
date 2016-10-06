@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('contentheader_title')
-{{ $contact->getDisplayName() }}
+{{ $contact->present()->displayName }}
 @endsection
 
 @section('section-one')

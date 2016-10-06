@@ -4,8 +4,10 @@ namespace App;
 
 use Elasticquent\ElasticquentTrait;
 use Illuminate\Database\Eloquent\Model;
+use App\Presenters\PresentableInterface;
+use App\Presenters\ContactPresenter as Presenter;
 
-class Contact extends Model
+class Contact extends Model implements PresentableInterface
 {
     use ElasticquentTrait;
 
@@ -142,73 +144,13 @@ class Contact extends Model
     }
 
     /**
-     * Return display name.
-     *
-     * @return string
+     * Return Contact Presenter.
+     * 
+     * @return Presenter
      */
-    public function getDisplayName()
+    public function present()
     {
-        return !empty($this->getFullName()) ? $this->getFullName() : $this->email;
-    }
-
-    /**
-     * Return full name.
-     *
-     * @return string
-     */
-    public function getFullName()
-    {
-        $bits = [];
-
-        if (!empty($this->first_name)) {
-            $bits[] = $this->first_name;
-        }
-
-        if (!empty($this->last_name)) {
-            $bits[] = $this->last_name;
-        }
-
-        return implode(' ', $bits);
-    }
-
-    /**
-     * Return class string based on contact type.
-     *
-     * @return string
-     */
-    public function getTypeClass()
-    {
-        switch ($this->type) {
-            case 'lead':
-            default:
-                return 'fa-circle-o text-muted';
-            case 'prospect':
-                return 'fa-circle-o text-green';
-            case 'customer':
-                return 'fa-circle text-green';
-        }
-    }
-
-    /**
-     * Return role in company for contact.
-     */
-    public function getRoleInCompany() 
-    {
-        $bits = [];
-
-        if (!empty($this->role)) {
-            $bits[] = $this->role;
-        }
-
-        if (!empty($this->company)) {
-            $bits[] = $this->company->name;
-        }        
-
-        if (isset($bits[0]) && isset($bits[1])) {
-            array_splice($bits, 1, 0, 'in');
-        }
-
-        return implode(' ' , $bits);
+        return new Presenter($this);
     }
 
     /**
