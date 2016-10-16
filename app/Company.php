@@ -1,12 +1,12 @@
 <?php
-
 namespace App;
 
 use App\Managers\TagManager;
 use App\Industry;
 use Illuminate\Database\Eloquent\Model;
+use App\Presenters\PresentableInterface;
 
-class Company extends Model
+class Company extends Model implements PresentableInterface
 {
     /**
      * Set the dates array so we can format them from a blade template.
@@ -91,29 +91,14 @@ class Company extends Model
     }
 
     /**
-     * Return formatted location.
-     *
-     * @return string
+     * Return Contact Presenter.
+     * 
+     * @return Presenter
      */
-    public function getLocation()
+    public function present()
     {
-        $bits = [];
-
-        if (!empty($this->address)) {
-            $bits[] = $this->address;
-        }
-
-        if (!empty($this->city)) {
-            $bits[] = $this->city;
-        }
-
-        if (!empty($this->country)) {
-            $bits[] = $this->country;
-        }
-
-        return implode(', ', $bits);
+        return new Presenter($this);
     }
-
     /**
      * Set tags for new or existing contact.
      *

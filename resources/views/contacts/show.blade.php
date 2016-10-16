@@ -12,7 +12,7 @@
 
 @section('main-content')
     @include('contacts.partials.profile')
-    @include('partials.delete.form', ['backpath' => URL::previous()])
+    @include('partials.delete.form', ['backpath' => URL::previous() ?: route('contacts.all')])
     @include('partials.delete.confirm')
 @endsection
 

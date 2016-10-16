@@ -2,7 +2,7 @@
 namespace App\Presenters;
 
 /**
- * 
+ * ContactPresenter
  */
 class ContactPresenter extends BasePresenter
 {		

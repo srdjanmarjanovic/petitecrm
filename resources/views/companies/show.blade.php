@@ -13,7 +13,7 @@
 
 @section('main-content')
     @include('companies.partials.profile')
-    @include('partials.delete.form', ['backpath' => URL::previous()])
+    @include('partials.delete.form', ['backpath' => URL::previous() ?: route('companies.all')])
     @include('partials.delete.confirm')
 @endsection
 
