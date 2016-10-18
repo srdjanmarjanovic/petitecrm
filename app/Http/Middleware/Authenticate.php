@@ -25,6 +25,9 @@ class Authenticate
 
             return redirect()->guest('login');
         }
+        
+        view()->share('loggedIn', auth()->check());
+        view()->share('user', auth()->user());
 
         return $next($request);
     }

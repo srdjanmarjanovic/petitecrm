@@ -10,9 +10,5 @@
 
 
 @section('main-content')
-	@if($loggedIn)
-		Hello {{ $user->name }}!
-	@else
-		Mrka kapa mili moj
-	@endif
+	
 @endsection
