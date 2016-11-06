@@ -25,6 +25,9 @@
             <li @if(Request::is('home*')) class="active" @endif><a href="{{ url('home') }}"><i class='glyphicon glyphicon-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             <li @if(Request::is('contacts*')) class="active" @endif><a href="{{ route('contacts.all') }}"><i class='glyphicon glyphicon-user text-aqua'></i> <span>Contacts</span></a></li>
             <li @if(Request::is('companies*')) class="active" @endif><a href="{{ route('companies.all') }}"><i class='glyphicon glyphicon-th-large text-green'></i> <span>Companies</span></a></li>
+            @if($user->is_owner)
+                <li @if(Request::is('users*')) class="active" @endif><a href="{{ route('users.all') }}"><i class='glyphicon glyphicon-th-large text-green'></i> <span>Users</span></a></li>
+            @endif
             <li class="treeview">
                 <a href="#"><i class='glyphicon glyphicon-list text-light-blue'></i> <span>My Lists</span> <small><i class="glyphicon glyphicon-chevron-down pull-right"></i></small></a>
                 <ul class="treeview-menu">

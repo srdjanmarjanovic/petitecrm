@@ -111,4 +111,22 @@ Route::group(['middleware' => 'auth'], function() {
             'store' => 'tag.save',
         ],
     ]);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Users related routes.
+    |--------------------------------------------------------------------------    
+    */   
+    Route::group(['middleware' => 'owners'], function() {
+        Route::resource('users', 'UserController', [
+            'names' => [
+                'create' => 'user.create',
+                'show' => 'user.single',
+                'index' => 'users.all',
+                'update' => 'user.update',
+                'edit' => 'user.edit',
+                'store' => 'user.save',
+            ],
+        ]);
+    });
 });
